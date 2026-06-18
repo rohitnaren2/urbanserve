@@ -401,11 +401,42 @@ export default function AdminDashboard() {
                             {prov.category} ({prov.experience} yrs)
                           </div>
                         </td>
-                        <td className="py-3">
-                          <span className="font-mono text-gray-600 bg-gray-50 px-2 py-1 rounded text-[11px] block w-fit">
-                            📎 {prov.verification_document || 'trade_license.pdf'}
-                          </span>
-                        </td>
+                         <td className="py-3">
+  <div className="flex items-center space-x-2">
+
+    {/* File name (clean + truncated) */}
+    <span
+      className="font-mono text-gray-600 bg-gray-50 px-2 py-1 rounded text-[11px] max-w-[140px] truncate"
+      title={
+        prov.verification_document
+          ? prov.verification_document.startsWith('data:')
+            ? 'Uploaded Document'
+            : prov.verification_document
+          : 'trade_license.pdf'
+      }
+    >
+      📎 {prov.verification_document
+        ? prov.verification_document.startsWith('data:')
+          ? 'Uploaded Document'
+          : prov.verification_document.split('/').pop()
+        : 'trade_license.pdf'}
+    </span>
+
+    {/* Download Button */}
+    {prov.verification_document && (
+      <a
+        href={prov.verification_document}
+        download
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-[10px] font-bold px-2 py-1 rounded bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
+      >
+        Download
+      </a>
+    )}
+
+  </div>
+</td>
                         <td className="py-3">
                           <span className={`px-2.5 py-0.5 rounded-full text-[9px] uppercase font-black tracking-widest ${
                             prov.status === 'approved' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'

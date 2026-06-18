@@ -134,7 +134,7 @@ function AppCore() {
 />
      
 
-      <main className="flex-1">
+        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-24">
         <Routes>
           {/* PUBLIC */}
           <Route path="/" element={<LandingPage />} />
