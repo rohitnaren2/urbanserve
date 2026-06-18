@@ -1,0 +1,216 @@
+[
+  {
+    "id": 1,
+    "booking_id": 1,
+    "amount": "59.00",
+    "payment_method": "NetBanking",
+    "payment_status": "completed",
+    "created_at": "2026-06-17T03:15:07.969Z",
+    "transaction_ref": "UPI-TRANS-MOBILE-QR",
+    "updated_at": "2026-06-17T03:16:53.866Z"
+  },
+  {
+    "id": 2,
+    "booking_id": 2,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "completed",
+    "created_at": "2026-06-17T14:40:13.200Z",
+    "transaction_ref": "CARD-4444",
+    "updated_at": "2026-06-17T15:16:28.300Z"
+  },
+  {
+    "id": 3,
+    "booking_id": 3,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-17T15:02:41.395Z"
+  },
+  {
+    "id": 4,
+    "booking_id": 4,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "completed",
+    "created_at": "2026-06-17T16:39:45.894Z",
+    "transaction_ref": "CARD-4444",
+    "updated_at": "2026-06-17T16:40:08.032Z"
+  },
+  {
+    "id": 5,
+    "booking_id": 5,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-17T17:01:38.430Z"
+  },
+  {
+    "id": 6,
+    "booking_id": 6,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-17T17:08:38.746Z"
+  },
+  {
+    "id": 7,
+    "booking_id": 7,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T03:01:26.190Z"
+  },
+  {
+    "id": 8,
+    "booking_id": 8,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T03:14:40.429Z"
+  },
+  {
+    "id": 9,
+    "booking_id": 9,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T03:27:54.296Z"
+  },
+  {
+    "id": 10,
+    "booking_id": 10,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T03:29:10.636Z"
+  },
+  {
+    "id": 11,
+    "booking_id": 11,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T03:51:29.077Z"
+  },
+  {
+    "id": 12,
+    "booking_id": 12,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T04:09:22.625Z"
+  },
+  {
+    "id": 13,
+    "booking_id": 13,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T07:20:44.162Z"
+  },
+  {
+    "id": 14,
+    "booking_id": 14,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T07:24:53.071Z"
+  },
+  {
+    "id": 15,
+    "booking_id": 15,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T07:26:45.813Z"
+  },
+  {
+    "id": 16,
+    "booking_id": 16,
+    "amount": "55.00",
+    "payment_method": "NetBanking",
+    "payment_status": "completed",
+    "created_at": "2026-06-18T07:30:19.268Z",
+    "transaction_ref": "UPI-TRANS-MOBILE-QR",
+    "updated_at": "2026-06-18T07:30:31.440Z"
+  },
+  {
+    "id": 17,
+    "booking_id": 17,
+    "amount": "55.00",
+    "payment_method": "UPI",
+    "payment_status": "completed",
+    "created_at": "2026-06-18T07:31:51.861Z",
+    "transaction_ref": "UPI-TRANS-MOBILE-QR",
+    "updated_at": "2026-06-18T07:31:57.783Z"
+  },
+  {
+    "id": 18,
+    "booking_id": 18,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "completed",
+    "created_at": "2026-06-18T07:33:58.280Z",
+    "transaction_ref": "CARD-4444",
+    "updated_at": "2026-06-18T08:09:23.281Z"
+  },
+  {
+    "id": 19,
+    "booking_id": 19,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T08:15:47.661Z"
+  },
+  {
+    "id": 20,
+    "booking_id": 20,
+    "amount": "59.00",
+    "payment_method": "Card",
+    "payment_status": "completed",
+    "created_at": "2026-06-18T08:17:50.829Z",
+    "transaction_ref": "CARD-4444",
+    "updated_at": "2026-06-18T08:21:21.979Z"
+  },
+  {
+    "id": 21,
+    "booking_id": 21,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T08:26:26.114Z"
+  },
+  {
+    "id": 22,
+    "booking_id": 22,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T08:29:56.234Z"
+  },
+  {
+    "id": 23,
+    "booking_id": 23,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T08:45:12.600Z"
+  },
+  {
+    "id": 24,
+    "booking_id": 24,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T08:48:54.323Z"
+  },
+  {
+    "id": 25,
+    "booking_id": 25,
+    "amount": "55.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-18T10:33:36.899Z"
+  }
+]

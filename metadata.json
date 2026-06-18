@@ -1,0 +1,6 @@
+{
+  "name": "UrbanServe",
+  "description": "On-demand full-stack service marketplace connecting customers with verified local household experts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

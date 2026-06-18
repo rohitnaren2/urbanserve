@@ -1,0 +1,822 @@
+[
+  {
+    "id": 1,
+    "user_id": 4,
+    "title": "Account Active",
+    "message": "Welcome to our premium service marketplace! Complete your profile to get personalized recommendations.",
+    "is_read": true,
+    "created_at": "2026-06-17T03:11:07.063Z",
+    "updated_at": "2026-06-17T14:34:57.413Z"
+  },
+  {
+    "id": 2,
+    "user_id": 5,
+    "title": "Registration Successful",
+    "message": "Welcome, kaviya! Your customer account has been created successfully. Explore our premium services.",
+    "is_read": true,
+    "created_at": "2026-06-17T03:13:49.601Z",
+    "updated_at": "2026-06-17T03:15:15.517Z"
+  },
+  {
+    "id": 3,
+    "user_id": 3,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Sofa and Carpet Steam Clean\" for 2026-06-18 at 09:00 AM - 11:00 AM. Please review the order.",
+    "is_read": false,
+    "created_at": "2026-06-17T03:15:07.970Z"
+  },
+  {
+    "id": 4,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Sofa and Carpet Steam Clean\" on 2026-06-18 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-17T03:15:07.972Z",
+    "updated_at": "2026-06-17T03:15:15.519Z"
+  },
+  {
+    "id": 5,
+    "user_id": 6,
+    "title": "Provider Account Pending",
+    "message": "Your registration is received and is currently pending approval by the administration team.",
+    "is_read": true,
+    "created_at": "2026-06-17T03:18:09.610Z",
+    "updated_at": "2026-06-17T03:22:32.686Z"
+  },
+  {
+    "id": 6,
+    "user_id": 7,
+    "title": "Registration Successful",
+    "message": "Welcome, kaviya! Your customer account has been created successfully. Explore our premium services.",
+    "is_read": true,
+    "created_at": "2026-06-17T04:52:33.583Z",
+    "updated_at": "2026-06-17T04:52:48.371Z"
+  },
+  {
+    "id": 7,
+    "user_id": 6,
+    "title": "Staff Action: Account Status APPROVED",
+    "message": "An administrator has marked your registration status review as \"APPROVED\". Check your profile dashboard.",
+    "is_read": true,
+    "created_at": "2026-06-17T13:47:53.117Z",
+    "updated_at": "2026-06-17T14:35:48.980Z"
+  },
+  {
+    "id": 8,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-18 at 09:00 AM - 11:00 AM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-17T14:40:13.203Z",
+    "updated_at": "2026-06-17T14:41:17.984Z"
+  },
+  {
+    "id": 9,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-18 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-17T14:40:13.204Z",
+    "updated_at": "2026-06-17T14:40:17.308Z"
+  },
+  {
+    "id": 10,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-24 at 11:00 AM - 01:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-17T15:02:41.403Z",
+    "updated_at": "2026-06-17T15:13:59.367Z"
+  },
+  {
+    "id": 11,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-24 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-17T15:02:41.405Z",
+    "updated_at": "2026-06-17T15:03:06.846Z"
+  },
+  {
+    "id": 12,
+    "user_id": 5,
+    "title": "Booking Update: Status is ACCEPTED",
+    "message": "Your service request has been ACCEPTED by the professional and scheduled!",
+    "is_read": true,
+    "created_at": "2026-06-17T15:14:27.179Z",
+    "updated_at": "2026-06-17T15:15:44.438Z"
+  },
+  {
+    "id": 13,
+    "user_id": 5,
+    "title": "Booking Update: Status is COMPLETED",
+    "message": "Your service has been marked as COMPLETED. Please leave a review!",
+    "is_read": true,
+    "created_at": "2026-06-17T15:15:14.174Z",
+    "updated_at": "2026-06-17T15:15:44.441Z"
+  },
+  {
+    "id": 14,
+    "user_id": 6,
+    "title": "New Client Review Received",
+    "message": "A client left a 4-star review on your recent job. Check your services statistics.",
+    "is_read": true,
+    "created_at": "2026-06-17T15:17:01.262Z",
+    "updated_at": "2026-06-17T15:17:45.907Z"
+  },
+  {
+    "id": 15,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-18 at 11:00 AM - 01:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-17T16:39:45.900Z",
+    "updated_at": "2026-06-18T08:27:21.766Z"
+  },
+  {
+    "id": 16,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-18 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-17T16:39:45.902Z",
+    "updated_at": "2026-06-17T16:46:41.422Z"
+  },
+  {
+    "id": 17,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-20 at 11:00 AM - 01:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-17T17:01:38.442Z",
+    "updated_at": "2026-06-18T08:27:21.769Z"
+  },
+  {
+    "id": 18,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-20 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-17T17:01:38.444Z",
+    "updated_at": "2026-06-17T17:07:38.336Z"
+  },
+  {
+    "id": 19,
+    "user_id": 6,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-20 at 11:00 AM - 01:00 PM.",
+    "is_read": true,
+    "created_at": "2026-06-17T17:07:57.446Z",
+    "updated_at": "2026-06-18T08:27:21.772Z"
+  },
+  {
+    "id": 20,
+    "user_id": 3,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-18 at 09:00 AM - 11:00 AM.",
+    "is_read": false,
+    "created_at": "2026-06-17T17:08:13.151Z"
+  },
+  {
+    "id": 21,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-19 at 11:00 AM - 01:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-17T17:08:38.751Z",
+    "updated_at": "2026-06-18T08:27:21.774Z"
+  },
+  {
+    "id": 22,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-19 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-17T17:08:38.753Z",
+    "updated_at": "2026-06-17T17:12:51.914Z"
+  },
+  {
+    "id": 23,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-20 at 11:00 AM - 01:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:01:26.193Z",
+    "updated_at": "2026-06-18T08:27:21.776Z"
+  },
+  {
+    "id": 24,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-20 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:01:26.194Z",
+    "updated_at": "2026-06-18T03:01:30.588Z"
+  },
+  {
+    "id": 25,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-26 at 09:00 AM - 11:00 AM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:14:40.432Z",
+    "updated_at": "2026-06-18T08:27:21.779Z"
+  },
+  {
+    "id": 26,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-26 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:14:40.434Z",
+    "updated_at": "2026-06-18T03:27:58.283Z"
+  },
+  {
+    "id": 27,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-20 at 09:00 AM - 11:00 AM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:27:54.306Z",
+    "updated_at": "2026-06-18T08:27:21.781Z"
+  },
+  {
+    "id": 28,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-20 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:27:54.308Z",
+    "updated_at": "2026-06-18T03:27:58.286Z"
+  },
+  {
+    "id": 29,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-18 at 02:00 PM - 04:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:29:10.642Z",
+    "updated_at": "2026-06-18T08:27:21.783Z"
+  },
+  {
+    "id": 30,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-18 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:29:10.643Z",
+    "updated_at": "2026-06-18T03:29:15.852Z"
+  },
+  {
+    "id": 31,
+    "user_id": 6,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-18 at 02:00 PM - 04:00 PM.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:50:19.521Z",
+    "updated_at": "2026-06-18T08:27:21.785Z"
+  },
+  {
+    "id": 32,
+    "user_id": 6,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-20 at 09:00 AM - 11:00 AM.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:50:40.420Z",
+    "updated_at": "2026-06-18T08:27:21.787Z"
+  },
+  {
+    "id": 33,
+    "user_id": 6,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-26 at 09:00 AM - 11:00 AM.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:50:48.908Z",
+    "updated_at": "2026-06-18T08:27:21.788Z"
+  },
+  {
+    "id": 34,
+    "user_id": 6,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-19 at 11:00 AM - 01:00 PM.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:50:55.541Z",
+    "updated_at": "2026-06-18T08:27:21.790Z"
+  },
+  {
+    "id": 35,
+    "user_id": 6,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-20 at 11:00 AM - 01:00 PM.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:51:03.905Z",
+    "updated_at": "2026-06-18T08:27:21.793Z"
+  },
+  {
+    "id": 36,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-20 at 09:00 AM - 11:00 AM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:51:29.081Z",
+    "updated_at": "2026-06-18T08:27:21.794Z"
+  },
+  {
+    "id": 37,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-20 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:51:29.084Z",
+    "updated_at": "2026-06-18T03:51:32.211Z"
+  },
+  {
+    "id": 38,
+    "user_id": 6,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-18 at 09:00 AM - 11:00 AM.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:55:59.738Z",
+    "updated_at": "2026-06-18T08:27:21.796Z"
+  },
+  {
+    "id": 39,
+    "user_id": 6,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-20 at 09:00 AM - 11:00 AM.",
+    "is_read": true,
+    "created_at": "2026-06-18T03:56:30.705Z",
+    "updated_at": "2026-06-18T08:27:21.799Z"
+  },
+  {
+    "id": 40,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-26 at 02:00 PM - 04:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T04:09:22.632Z",
+    "updated_at": "2026-06-18T08:27:21.801Z"
+  },
+  {
+    "id": 41,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-26 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T04:09:22.634Z",
+    "updated_at": "2026-06-18T04:09:25.728Z"
+  },
+  {
+    "id": 42,
+    "user_id": 6,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-26 at 02:00 PM - 04:00 PM.",
+    "is_read": true,
+    "created_at": "2026-06-18T04:09:38.518Z",
+    "updated_at": "2026-06-18T08:27:21.803Z"
+  },
+  {
+    "id": 43,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-30 at 11:00 AM - 01:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:20:44.172Z",
+    "updated_at": "2026-06-18T08:27:21.805Z"
+  },
+  {
+    "id": 44,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-30 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:20:44.174Z",
+    "updated_at": "2026-06-18T07:20:48.234Z"
+  },
+  {
+    "id": 45,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-25 at 09:00 AM - 11:00 AM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:24:53.076Z",
+    "updated_at": "2026-06-18T08:27:21.807Z"
+  },
+  {
+    "id": 46,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-25 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:24:53.079Z",
+    "updated_at": "2026-06-18T07:26:47.910Z"
+  },
+  {
+    "id": 47,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-19 at 04:00 PM - 06:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:26:45.817Z",
+    "updated_at": "2026-06-18T08:27:21.809Z"
+  },
+  {
+    "id": 48,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-19 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:26:45.819Z",
+    "updated_at": "2026-06-18T07:26:47.911Z"
+  },
+  {
+    "id": 49,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-20 at 11:00 AM - 01:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:30:19.277Z",
+    "updated_at": "2026-06-18T08:27:21.811Z"
+  },
+  {
+    "id": 50,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-20 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:30:19.279Z",
+    "updated_at": "2026-06-18T07:30:57.909Z"
+  },
+  {
+    "id": 51,
+    "user_id": 6,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-30 at 11:00 AM - 01:00 PM.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:31:28.263Z",
+    "updated_at": "2026-06-18T08:27:21.813Z"
+  },
+  {
+    "id": 52,
+    "user_id": 6,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-25 at 09:00 AM - 11:00 AM.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:31:30.627Z",
+    "updated_at": "2026-06-18T08:27:21.815Z"
+  },
+  {
+    "id": 53,
+    "user_id": 6,
+    "title": "Booking Cancelled",
+    "message": "The client cancelled the booking for 2026-06-19 at 04:00 PM - 06:00 PM.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:31:32.922Z",
+    "updated_at": "2026-06-18T08:27:21.817Z"
+  },
+  {
+    "id": 54,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-20 at 02:00 PM - 04:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:31:51.865Z",
+    "updated_at": "2026-06-18T08:27:21.841Z"
+  },
+  {
+    "id": 55,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-20 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:31:51.868Z",
+    "updated_at": "2026-06-18T08:29:00.252Z"
+  },
+  {
+    "id": 56,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-26 at 04:00 PM - 06:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:33:58.286Z",
+    "updated_at": "2026-06-18T08:27:21.843Z"
+  },
+  {
+    "id": 57,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-26 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T07:33:58.288Z",
+    "updated_at": "2026-06-18T08:29:00.255Z"
+  },
+  {
+    "id": 58,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-26 at 09:00 AM - 11:00 AM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:15:47.668Z",
+    "updated_at": "2026-06-18T08:27:21.845Z"
+  },
+  {
+    "id": 59,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-26 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:15:47.670Z",
+    "updated_at": "2026-06-18T08:29:00.257Z"
+  },
+  {
+    "id": 60,
+    "user_id": 3,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Sofa and Carpet Steam Clean\" for 2026-06-26 at 11:00 AM - 01:00 PM. Please review the order.",
+    "is_read": false,
+    "created_at": "2026-06-18T08:17:50.837Z"
+  },
+  {
+    "id": 61,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Sofa and Carpet Steam Clean\" on 2026-06-26 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:17:50.840Z",
+    "updated_at": "2026-06-18T08:29:00.259Z"
+  },
+  {
+    "id": 62,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-07-02 at 02:00 PM - 04:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:26:26.124Z",
+    "updated_at": "2026-06-18T08:27:21.848Z"
+  },
+  {
+    "id": 63,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-07-02 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:26:26.126Z",
+    "updated_at": "2026-06-18T08:29:00.261Z"
+  },
+  {
+    "id": 64,
+    "user_id": 5,
+    "title": "Booking Update: Status is ACCEPTED",
+    "message": "Your service request has been ACCEPTED by the professional and scheduled!",
+    "is_read": true,
+    "created_at": "2026-06-18T08:27:35.498Z",
+    "updated_at": "2026-06-18T08:29:00.264Z"
+  },
+  {
+    "id": 65,
+    "user_id": 5,
+    "title": "Booking Update: Status is ACCEPTED",
+    "message": "Your service request has been ACCEPTED by the professional and scheduled!",
+    "is_read": true,
+    "created_at": "2026-06-18T08:27:39.199Z",
+    "updated_at": "2026-06-18T08:29:00.266Z"
+  },
+  {
+    "id": 66,
+    "user_id": 5,
+    "title": "Booking Update: Status is ACCEPTED",
+    "message": "Your service request has been ACCEPTED by the professional and scheduled!",
+    "is_read": true,
+    "created_at": "2026-06-18T08:27:55.158Z",
+    "updated_at": "2026-06-18T08:29:00.268Z"
+  },
+  {
+    "id": 67,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-07-11 at 04:00 PM - 06:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:29:56.239Z",
+    "updated_at": "2026-06-18T08:43:07.071Z"
+  },
+  {
+    "id": 68,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-07-11 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:29:56.240Z",
+    "updated_at": "2026-06-18T08:41:39.737Z"
+  },
+  {
+    "id": 69,
+    "user_id": 5,
+    "title": "Booking Update: Status is ACCEPTED",
+    "message": "Your service request has been ACCEPTED by the professional and scheduled!",
+    "is_read": true,
+    "created_at": "2026-06-18T08:42:26.945Z",
+    "updated_at": "2026-06-18T08:43:51.688Z"
+  },
+  {
+    "id": 70,
+    "user_id": 5,
+    "title": "Booking Update: Status is COMPLETED",
+    "message": "Your service has been marked as COMPLETED. Please leave a review!",
+    "is_read": true,
+    "created_at": "2026-06-18T08:42:31.690Z",
+    "updated_at": "2026-06-18T08:43:51.691Z"
+  },
+  {
+    "id": 71,
+    "user_id": 5,
+    "title": "Booking Update: Status is COMPLETED",
+    "message": "Your service has been marked as COMPLETED. Please leave a review!",
+    "is_read": true,
+    "created_at": "2026-06-18T08:42:38.850Z",
+    "updated_at": "2026-06-18T08:43:51.692Z"
+  },
+  {
+    "id": 72,
+    "user_id": 5,
+    "title": "Booking Update: Status is COMPLETED",
+    "message": "Your service has been marked as COMPLETED. Please leave a review!",
+    "is_read": true,
+    "created_at": "2026-06-18T08:42:44.495Z",
+    "updated_at": "2026-06-18T08:43:51.695Z"
+  },
+  {
+    "id": 73,
+    "user_id": 5,
+    "title": "Booking Update: Status is COMPLETED",
+    "message": "Your service has been marked as COMPLETED. Please leave a review!",
+    "is_read": true,
+    "created_at": "2026-06-18T08:42:53.184Z",
+    "updated_at": "2026-06-18T08:43:51.697Z"
+  },
+  {
+    "id": 74,
+    "user_id": 6,
+    "title": "New Client Review Received",
+    "message": "A client left a 5-star review on your recent job. Check your services statistics.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:44:16.889Z",
+    "updated_at": "2026-06-18T09:01:29.852Z"
+  },
+  {
+    "id": 75,
+    "user_id": 6,
+    "title": "New Client Review Received",
+    "message": "A client left a 5-star review on your recent job. Check your services statistics.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:44:36.467Z",
+    "updated_at": "2026-06-18T09:01:29.854Z"
+  },
+  {
+    "id": 76,
+    "user_id": 6,
+    "title": "New Client Review Received",
+    "message": "A client left a 5-star review on your recent job. Check your services statistics.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:44:44.013Z",
+    "updated_at": "2026-06-18T09:01:29.856Z"
+  },
+  {
+    "id": 77,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-07-10 at 02:00 PM - 04:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:45:12.609Z",
+    "updated_at": "2026-06-18T09:01:29.859Z"
+  },
+  {
+    "id": 78,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-07-10 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:45:12.611Z",
+    "updated_at": "2026-06-18T08:45:28.267Z"
+  },
+  {
+    "id": 79,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-19 at 04:00 PM - 06:00 PM. Please review the order.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:48:54.333Z",
+    "updated_at": "2026-06-18T09:01:29.861Z"
+  },
+  {
+    "id": 80,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-19 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T08:48:54.336Z",
+    "updated_at": "2026-06-18T10:23:43.683Z"
+  },
+  {
+    "id": 81,
+    "user_id": 5,
+    "title": "Booking Update: Status is ACCEPTED",
+    "message": "Your service request has been ACCEPTED by the professional and scheduled!",
+    "is_read": true,
+    "created_at": "2026-06-18T09:01:26.014Z",
+    "updated_at": "2026-06-18T10:23:43.686Z"
+  },
+  {
+    "id": 82,
+    "user_id": 7,
+    "title": "Provider Account Pending",
+    "message": "Your registration is received and is currently pending approval by the administration team.",
+    "is_read": false,
+    "created_at": "2026-06-18T09:05:01.991Z"
+  },
+  {
+    "id": 83,
+    "user_id": 8,
+    "title": "Registration Successful",
+    "message": "Welcome, sumathi! Your customer account has been created successfully. Explore our premium services.",
+    "is_read": false,
+    "created_at": "2026-06-18T09:05:39.110Z"
+  },
+  {
+    "id": 84,
+    "user_id": 9,
+    "title": "Registration Successful",
+    "message": "Welcome, panneer! Your customer account has been created successfully. Explore our premium services.",
+    "is_read": true,
+    "created_at": "2026-06-18T09:22:01.671Z",
+    "updated_at": "2026-06-18T09:22:09.079Z"
+  },
+  {
+    "id": 85,
+    "user_id": 10,
+    "title": "Registration Successful",
+    "message": "Welcome, kaviya! Your customer account has been created successfully. Explore our premium services.",
+    "is_read": true,
+    "created_at": "2026-06-18T09:23:49.227Z",
+    "updated_at": "2026-06-18T09:24:06.958Z"
+  },
+  {
+    "id": 86,
+    "user_id": 5,
+    "title": "Booking Update: Status is COMPLETED",
+    "message": "Your service has been marked as COMPLETED. Please leave a review!",
+    "is_read": true,
+    "created_at": "2026-06-18T10:25:38.842Z",
+    "updated_at": "2026-06-18T10:26:35.950Z"
+  },
+  {
+    "id": 87,
+    "user_id": 5,
+    "title": "Booking Update: Status is ACCEPTED",
+    "message": "Your service request has been ACCEPTED by the professional and scheduled!",
+    "is_read": true,
+    "created_at": "2026-06-18T10:27:19.455Z",
+    "updated_at": "2026-06-18T10:27:57.896Z"
+  },
+  {
+    "id": 88,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac repair and clean\" for 2026-06-19 at 02:00 PM - 04:00 PM. Please review the order.",
+    "is_read": false,
+    "created_at": "2026-06-18T10:33:36.911Z"
+  },
+  {
+    "id": 89,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac repair and clean\" on 2026-06-19 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-18T10:33:36.914Z",
+    "updated_at": "2026-06-18T10:39:48.932Z"
+  },
+  {
+    "id": 90,
+    "user_id": 6,
+    "title": "New Client Review Received",
+    "message": "A client left a 5-star review on your recent job. Check your services statistics.",
+    "is_read": false,
+    "created_at": "2026-06-18T10:39:28.672Z"
+  },
+  {
+    "id": 91,
+    "user_id": 6,
+    "title": "New Client Review Received",
+    "message": "A client left a 5-star review on your recent job. Check your services statistics.",
+    "is_read": false,
+    "created_at": "2026-06-18T10:39:39.655Z"
+  },
+  {
+    "id": 92,
+    "user_id": 11,
+    "title": "Provider Account Pending",
+    "message": "Your registration is received and is currently pending approval by the administration team.",
+    "is_read": true,
+    "created_at": "2026-06-18T10:41:23.915Z",
+    "updated_at": "2026-06-18T10:41:29.958Z"
+  }
+]
