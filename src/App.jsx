@@ -44,6 +44,14 @@ function AppCore() {
   const [user, setUser] = useState(null);
   const [notifications, setNotifications] = useState([]);
   const [appLoading, setAppLoading] = useState(true);
+  const fetchNotifications = async () => {
+  try {
+    const data = await api.getNotifications();
+    setNotifications(data.notifications || []);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   /* =========================
      AUTH LOAD
@@ -63,8 +71,7 @@ function AppCore() {
       if (data?.user) {
         setUser(data.user);
 
-        const notifData = await api.getNotifications();
-        setNotifications(notifData.notifications || []);
+        await fetchNotifications();
       } else {
         localStorage.removeItem('token');
         setUser(null);
@@ -81,6 +88,17 @@ function AppCore() {
   useEffect(() => {
     loadUserAndNotifs();
   }, []);
+  useEffect(() => {
+  if (!user) return;
+
+  fetchNotifications();
+
+  const interval = setInterval(() => {
+    fetchNotifications();
+  }, 5000);
+
+  return () => clearInterval(interval);
+}, [user]);
   
   /* =========================
      NAVIGATION WRAPPER (OLD SYSTEM COMPATIBLE)
@@ -105,17 +123,16 @@ function AppCore() {
   }
 
   return (
+ 
     <div className="min-h-screen flex flex-col">
-     <Navbar
+         <Navbar
   user={user}
   onLogout={onLogout}
   notifications={notifications}
-  fetchNotifications={async () => {
-    const data = await api.getNotifications();
-    setNotifications(data.notifications || []);
-  }}
+  fetchNotifications={fetchNotifications}
   navigate={navigate}
 />
+     
 
       <main className="flex-1">
         <Routes>

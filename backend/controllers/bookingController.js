@@ -59,6 +59,17 @@ export const createBooking = async (req, res) => {
         is_read: false
       });
     }
+    // Notify Admins
+const admins = dbQuery.where('users', u => u.role_id === 3);
+
+admins.forEach(admin => {
+  dbQuery.insert('notifications', {
+    user_id: admin.id,
+    title: 'New Booking Created',
+    message: `A new booking was created for "${service.title}".`,
+    is_read: false
+  });
+});
 
     // Notify Customer
     dbQuery.insert('notifications', {
@@ -166,6 +177,16 @@ if (action === 'accept') {
       message: notifyMessage,
       is_read: false
     });
+    const admins = dbQuery.where('users', u => u.role_id === 3);
+
+admins.forEach(admin => {
+  dbQuery.insert('notifications', {
+    user_id: admin.id,
+    title: 'Booking Status Changed',
+    message: `Booking #${bookingId} changed to ${nextStatus}.`,
+    is_read: false
+  });
+});
 
     res.status(200).json({
       message: `Booking order status updated to ${nextStatus}`,
@@ -251,6 +272,16 @@ dbQuery.update('bookings', bookingId, {
   payment_status: 'paid',
     status: 'confirmed'
 });
+    const admins = dbQuery.where('users', u => u.role_id === 3);
+
+admins.forEach(admin => {
+  dbQuery.insert('notifications', {
+    user_id: admin.id,
+    title: 'Payment Received',
+    message: `Payment received for booking #${bookingId}.`,
+    is_read: false
+  });
+});
 
     res.status(200).json({ message: 'Payment successfully processed! Your slot is confirmed.' });
   } catch (error) {
@@ -324,8 +355,8 @@ export const submitReview = async (req, res) => {
 export const getUserNotifications = async (req, res) => {
   try {
     const userId = req.user.userId;
-    const list = dbQuery.where('notifications', n => n.user_id === userId)
-      .sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
+   const list = dbQuery.where('notifications', n => n.user_id === userId)
+  .sort((a, b) => b.id - a.id);
     res.status(200).json({ notifications: list });
   } catch (error) {
     console.error('Error fetching notifications:', error);

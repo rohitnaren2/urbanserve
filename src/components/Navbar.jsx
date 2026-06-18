@@ -18,11 +18,15 @@ export default function Navbar({
   const handleMarkAsRead = async () => {
     try {
       await api.markNotificationsAsRead();
-      if (fetchNotifications) fetchNotifications();
-    } catch (e) {
+     } catch (e) {
       console.error(e);
     }
   };
+  useEffect(() => {
+  if (!showNotifMenu) {
+    handleMarkAsRead();
+  }
+}, [showNotifMenu]);
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-xs" id="global-navigation-bar">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,16 +74,11 @@ export default function Navbar({
                 {/* Notification Dropdown */}
                 <div className="relative">
                   <button
-                    onClick={() => {
+                  onClick={() => {
   setShowNotifMenu(prev => !prev);
   setShowProfileMenu(false);
-
-  if (!showNotifMenu) {
-    setTimeout(() => {
-      handleMarkAsRead();
-    }, 0);
-  }
 }}
+                    
                     className="relative p-2 rounded-xl text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-all focus:outline-none"
                     id="notif-dropdown-btn"
                   >
@@ -301,61 +300,140 @@ export default function Navbar({
             </>
           )}
 
-          {user && (
-            <div className="border-t border-gray-100 pt-2 space-y-1">
-              <div className="px-4 py-2 bg-gray-55 text-xs font-semibold text-gray-500">
-                Logged in as {user.fullName} ({user.roleId === 3 ? 'Admin' : user.roleId === 1 ? 'Customer' : 'Provider'})
-              </div>
-              <button
-                onClick={() => { setIsOpen(false); navigate(
-  user.roleId === 3
-    ? '/admin'
-    : user.roleId === 2
-    ? '/provider-dashboard'
-    : '/customer-dashboard'
-); }}
-                className="block w-full text-left px-4 py-2 rounded-xl text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-medium"
-              >
-                My Dashboard
-              </button>
-              <button
-                onClick={() => {
- setIsOpen(false);
+           {user && (
+  <div className="border-t border-gray-100 pt-2 space-y-1">
 
- if (user.roleId === 2) {
-   navigate('/profile');
- } else {
-   navigate(user.roleId === 2 ? '/provider-profile' : '/profile');
- }
-}}
-                className="block w-full text-left px-4 py-2 rounded-xl text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-medium"
-              >
-                Personal Profile
-              </button>
-              {user.roleId === 2 && (
-                <>
-                  <button
-                    onClick={() => { setIsOpen(false); navigate('/provider-profile'); }}
-                    className="block w-full text-left px-4 py-2 rounded-xl text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-medium"
-                  >
-                    Professional Profile
-                  </button>
-                  <button
-                    onClick={() => { setIsOpen(false); navigate('/provider/services'); }}
-                    className="block w-full text-left px-4 py-2 rounded-xl text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-medium"
-                  >
-                    Manage Services
-                  </button>
-                </>
-              )}
-              <button
-                onClick={() => { setIsOpen(false); onLogout(); navigate('/'); }}
-                className="block w-full text-left px-4 py-2 rounded-xl text-sm text-red-600 hover:bg-red-50 font-bold"
-              >
-                Sign Out
-              </button>
+    {/* Logged in info */}
+    <div className="px-4 py-2 bg-gray-50 text-xs font-semibold text-gray-500">
+      Logged in as {user.fullName} (
+      {user.roleId === 3
+        ? 'Admin'
+        : user.roleId === 1
+        ? 'Customer'
+        : 'Provider'}
+      )
+    </div>
+
+    {/* 🔔 NOTIFICATIONS (ONLY FOR LOGGED IN USERS) */}
+    <div className="relative px-4 py-2">
+      <button
+        onClick={() => {
+          setShowNotifMenu(prev => !prev);
+          setShowProfileMenu(false);
+        }}
+        className="flex items-center space-x-2 text-gray-700"
+      >
+        <Bell size={18} />
+
+        <span className="text-sm font-medium">Notifications</span>
+
+        {unreadNotifsCount > 0 && (
+          <span className="ml-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] text-white">
+            {unreadNotifsCount}
+          </span>
+        )}
+      </button>
+
+      {/* Dropdown */}
+      {showNotifMenu && (
+        <div className="mt-2 bg-white border border-gray-100 rounded-xl shadow-md max-h-60 overflow-y-auto">
+
+          {notifications.length === 0 ? (
+            <div className="p-3 text-xs text-gray-400">
+              No notifications yet
             </div>
+          ) : (
+            notifications.map((n) => (
+              <div
+                key={n.id}
+                className="px-3 py-2 border-b border-gray-50"
+              >
+                <p className="text-xs font-semibold text-gray-800">
+                  {n.title}
+                </p>
+                <p className="text-[10px] text-gray-500">
+                  {n.message}
+                </p>
+              </div>
+            ))
           )}
+        </div>
+      )}
+    </div>
+
+    {/* Dashboard */}
+    <button
+      onClick={() => {
+        setIsOpen(false);
+        navigate(
+          user.roleId === 3
+            ? '/admin'
+            : user.roleId === 2
+            ? '/provider-dashboard'
+            : '/customer-dashboard'
+        );
+      }}
+      className="block w-full text-left px-4 py-2 rounded-xl text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-medium"
+    >
+      My Dashboard
+    </button>
+
+    {/* Profile */}
+    <button
+      onClick={() => {
+        setIsOpen(false);
+
+        if (user.roleId === 2) {
+          navigate('/profile');
+        } else {
+          navigate(
+            user.roleId === 2 ? '/provider-profile' : '/profile'
+          );
+        }
+      }}
+      className="block w-full text-left px-4 py-2 rounded-xl text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-medium"
+    >
+      Personal Profile
+    </button>
+
+    {/* Provider-only options */}
+    {user.roleId === 2 && (
+      <>
+        <button
+          onClick={() => {
+            setIsOpen(false);
+            navigate('/provider-profile');
+          }}
+          className="block w-full text-left px-4 py-2 rounded-xl text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-medium"
+        >
+          Professional Profile
+        </button>
+
+        <button
+          onClick={() => {
+            setIsOpen(false);
+            navigate('/provider/services');
+          }}
+          className="block w-full text-left px-4 py-2 rounded-xl text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 font-medium"
+        >
+          Manage Services
+        </button>
+      </>
+    )}
+
+    {/* Logout */}
+    <button
+      onClick={() => {
+        setIsOpen(false);
+        onLogout();
+        navigate('/');
+      }}
+      className="block w-full text-left px-4 py-2 rounded-xl text-sm text-red-600 hover:bg-red-50 font-bold"
+    >
+      Sign Out
+    </button>
+  </div>
+)}
         </div>
       )}
     </nav>

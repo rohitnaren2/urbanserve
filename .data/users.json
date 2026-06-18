@@ -70,7 +70,7 @@
     "address": "",
     "is_blocked": false,
     "created_at": "2026-06-17T03:18:09.601Z",
-    "updated_at": "2026-06-17T03:19:22.902Z"
+    "updated_at": "2026-06-18T14:25:22.609Z"
   },
   {
     "id": 7,
@@ -107,29 +107,5 @@
     "address": "karaikudi",
     "is_blocked": false,
     "created_at": "2026-06-18T09:22:01.667Z"
-  },
-  {
-    "id": 10,
-    "full_name": "kaviya",
-    "email": "kaviyapanneer06@gmail.com",
-    "phone": "1234567890",
-    "password": "$2b$10$jTVaJQtqgUPhx4jLKnQSs.TRMoZB9eRzfQj0..36oXZHJbYFiNF4C",
-    "role_id": 1,
-    "profile_photo": "https://ui-avatars.com/api/?name=kaviya&background=10b981&color=fff",
-    "address": "karaikudi",
-    "is_blocked": false,
-    "created_at": "2026-06-18T09:23:49.223Z"
-  },
-  {
-    "id": 11,
-    "full_name": "rohitnaren",
-    "email": "rohitnaren@gmail.com",
-    "phone": "1234567890",
-    "password": "$2b$10$GMBMUxfuaG2sEE4P3x07PuBiQbs7X/ithIWkE8PhNYqeRVLLQPezi",
-    "role_id": 2,
-    "profile_photo": "https://ui-avatars.com/api/?name=rohitnaren&background=10b981&color=fff",
-    "address": "",
-    "is_blocked": false,
-    "created_at": "2026-06-18T10:41:23.899Z"
   }
 ]

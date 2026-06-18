@@ -44,6 +44,17 @@ export const registerCustomer = async (req, res) => {
       message: `Welcome, ${fullName}! Your customer account has been created successfully. Explore our premium services.`,
       is_read: false
     });
+   // Notify Admins
+const admins = dbQuery.where('users', u => u.role_id === 3);
+
+admins.forEach(admin => {
+  dbQuery.insert('notifications', {
+    user_id: admin.id,
+    title: 'New Provider Approval Request',
+    message: `${fullName} has registered as a provider and is waiting for approval.`,
+    is_read: false
+  });
+});
 
     // Sign JWT
     const token = jwt.sign(
@@ -131,6 +142,17 @@ export const registerProvider = async (req, res) => {
       message: 'Your registration is received and is currently pending approval by the administration team.',
       is_read: false
     });
+    // Notify Admins (THIS IS THE MISSING PART)
+const admins = dbQuery.where('users', u => u.role_id === 3);
+
+admins.forEach(admin => {
+  dbQuery.insert('notifications', {
+    user_id: admin.id,
+    title: 'New Provider Approval Request',
+    message: `${fullName} has registered as a provider and is waiting for approval.`,
+    is_read: false
+  });
+});
 
     // JWT for provider
     const token = jwt.sign(
