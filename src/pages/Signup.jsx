@@ -36,31 +36,104 @@ const [roleSelection, setRoleSelection] = useState(
   const [errorMsg, setErrorMsg] = useState('');
 
   const handleRoleSelection = (role) => {
-    setRoleSelection(role);
-    setStep(2);
+      setErrorMsg('');
+      setRoleSelection(role);
+      setStep(2);
   };
+  const showError = (message) => {
+  setErrorMsg(message);
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg('');
+    const emailRegex =
+  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in|au|com\.au|org|org\.au|net|edu|gov|gov\.au)$/i;
 
-    // client validity validations
-    if (!email || !fullName || !phone || !password) {
-      setErrorMsg('Mandatory specifications are missing.');
-      return;
-    }
+if (!fullName.trim()) {
+  showError('Full Name is required.');
+  return;
+}
 
-    if (password !== confirmPassword) {
-      setErrorMsg('Password confirmation mismatch. Correct matching fields.');
-      return;
-    }
+if (!/^[A-Za-z\s]+$/.test(fullName.trim())) {
+  showError('Full Name should contain only alphabets.');
+  return;
+}
 
-    if (password.length < 6) {
-      setErrorMsg('Password strength warning: minimum 6 characters required.');
-      return;
-    }
+if (!email.trim()) {
+  showError('Email Address is required.');
+  return;
+}
 
-    setLoading(true);
+if (!emailRegex.test(email.trim())) {
+  showError('Enter a valid email address.');
+  return;
+}
+
+if (!phone.trim()) {
+  showError('Phone Number is required.');
+  return;
+}
+
+if (!/^\d{10}$/.test(phone.trim())) {
+  showError('Phone Number must contain exactly 10 digits.');
+  return;
+}
+
+if (!address.trim()) {
+  showError('Address is required.');
+  return;
+}
+
+if (!password) {
+  showError('Password is required.');
+  return;
+}
+
+if (password.length < 6) {
+  showError('Password must contain at least 6 characters.');
+  return;
+}
+
+if (!confirmPassword) {
+  showError('Confirm Password is required.');
+  return;
+}
+
+if (password !== confirmPassword) {
+  showError('Password confirmation mismatch.');
+  return;
+}
+
+/* Provider-only validations */
+
+if (roleSelection === 'provider') {
+  if (!businessName.trim()) {
+    showError('Business / Trade Name is required.');
+    return;
+  }
+
+  if (!experience || Number(experience) < 0) {
+    showError('Years of Industry Experience is required.');
+    return;
+  }
+
+  if (!verificationDocument) {
+    showError('Verification Document is required.');
+    return;
+  }
+
+  if (!description.trim()) {
+    showError('Company Description & Bio is required.');
+    return;
+  }
+}
+  setLoading(true);
 
     try {
       if (roleSelection === 'customer') {
@@ -187,7 +260,9 @@ else {
           <div className="space-y-6">
             <div className="flex justify-between items-center pb-4 border-b border-gray-100">
               <div>
-                <button onClick={() => setStep(1)} className="text-[11px] font-bold text-gray-400 uppercase tracking-widest hover:text-emerald-600 transition">
+                <button  onClick={() => {setErrorMsg('');
+setStep(1);
+  }} className="text-[11px] font-bold text-gray-400 uppercase tracking-widest hover:text-emerald-600 transition">
                   ← Back to Selection
                 </button>
                 <h3 className="text-2xl font-black text-gray-950 mt-1">
@@ -206,7 +281,7 @@ else {
               </div>
             )}
 
-            <form onSubmit={handleRegisterSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5 text-left">
+            <form   noValidate onSubmit={handleRegisterSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5 text-left">
               
               {/* Profile image Upload */}
               <div className="md:col-span-2 flex flex-col items-center sm:items-start space-y-3">
@@ -250,7 +325,7 @@ else {
                 <label className="text-xs font-bold text-gray-700 block">Full Name</label>
                 <input
                   type="text"
-                  required
+                
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="John Doe"
@@ -268,7 +343,7 @@ else {
                   </span>
                   <input
                     type="email"
-                    required
+                  
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@example.com"
@@ -287,7 +362,7 @@ else {
                   </span>
                   <input
                     type="tel"
-                    required
+                  
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+1 (555) 000-0000"
@@ -319,7 +394,7 @@ else {
                   </span>
                   <input
                     type="password"
-                    required
+                  
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Min 6 characters"
@@ -338,7 +413,7 @@ else {
                   </span>
                   <input
                     type="password"
-                    required
+                  
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="Retype password"

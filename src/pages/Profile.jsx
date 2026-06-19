@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { User, ShieldAlert, Lock, Save, Camera, AlertCircle, CheckCircle } from 'lucide-react';
 import { api } from '../services/api';
+
 
 export default function Profile({ user, onProfileUpdate }) {
   const [activeTab, setActiveTab] = useState('personal'); // 'personal', 'security'
@@ -9,7 +10,13 @@ export default function Profile({ user, onProfileUpdate }) {
   const [fullName, setFullName] = useState(user?.fullName || '');
   const [phone, setPhone] = useState(user?.phone || '');
   const [address, setAddress] = useState(user?.address || '');
-  const [profilePhoto, setProfilePhoto] = useState(user?.profilePhoto || '');
+  const defaultAvatar =
+  'https://ui-avatars.com/api/?name=' +
+  encodeURIComponent(fullName || 'User') +
+  '&background=10b981&color=fff';
+  const [profilePhoto, setProfilePhoto] = useState(
+  user?.profilePhoto || defaultAvatar
+);
 
   // Password modification states
   const [currentPassword, setCurrentPassword] = useState('');
@@ -19,31 +26,92 @@ export default function Profile({ user, onProfileUpdate }) {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
+  useEffect(() => {
+    if (successMsg) {
+      const timer = setTimeout(() => {
+        setSuccessMsg('');
+      }, 5000);
 
-  const handlePersonalSave = async (e) => {
-    e.preventDefault();
-    setErrorMsg('');
-    setSuccessMsg('');
-    setLoading(true);
-
-    try {
-      const response = await api.updateProfile({
-        fullName,
-        phone,
-        address,
-        profilePhoto
-      });
-
-      // Update client context state
-      onProfileUpdate(response.user);
-      setSuccessMsg('Personal contact registry successfully saved!');
-    } catch (err) {
-      console.error(err);
-      setErrorMsg(err.message || 'Failed to sync modifications.');
-    } finally {
-      setLoading(false);
+      return () => clearTimeout(timer);
     }
-  };
+  }, [successMsg]);
+ 
+  
+  const showError = (message) => {
+  setErrorMsg(message);
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
+console.log('USER DATA:', user);
+
+const handlePersonalSave = async (e) => {
+  e.preventDefault();
+
+  setErrorMsg('');
+  setSuccessMsg('');
+
+  // Full Name validation
+  if (!fullName.trim()) {
+   showError('Full Name is required.');
+    return;
+  }
+
+  if (!/^[A-Za-z\s]+$/.test(fullName.trim())) {
+    showError('Full Name should contain only alphabets.');
+    return;
+  }
+
+  // Phone validation
+  if (!phone.trim()) {
+   showError('Phone Number is required.');
+    return;
+  }
+
+  if (!/^\d{10}$/.test(phone.trim())) {
+    showError('Phone Number must contain exactly 10 digits.');
+  
+    return;
+  }
+
+  // Address required ONLY for customers
+  if (user?.roleId === 1 && !address.trim()) {
+ showError('Address is required.');
+  return;
+}
+
+  setLoading(true);
+
+  try {
+      
+    const response = await api.updateProfile({
+      fullName,
+      phone,
+      address,
+      profilePhoto
+    });
+     
+
+   setSuccessMsg('Personal contact registry successfully saved!');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+
+if (onProfileUpdate && typeof onProfileUpdate === 'function') {
+  
+  if (typeof onProfileUpdate === 'function') {
+  onProfileUpdate(response.user);
+}
+}
+   
+  } catch (err) {
+    console.error('save error',err);
+    showError(err.message || 'Failed to sync modifications.');
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handlePasswordSave = async (e) => {
     e.preventDefault();
@@ -51,12 +119,12 @@ export default function Profile({ user, onProfileUpdate }) {
     setSuccessMsg('');
 
     if (newPassword !== confirmPassword) {
-      setErrorMsg('New password confirmation mismatch.');
+  showError('New password confirmation mismatch.');
       return;
     }
 
     if (newPassword.length < 6) {
-      setErrorMsg('New password must be at least 6 characters.');
+      showError('New password must be at least 6 characters.');
       return;
     }
 
@@ -67,6 +135,9 @@ export default function Profile({ user, onProfileUpdate }) {
         currentPassword,
         newPassword
       });
+  
+     setSuccessMsg('Profile Details successfully saved!');
+
 
       setSuccessMsg('Security passwords successfully rotated!');
       setCurrentPassword('');
@@ -74,7 +145,7 @@ export default function Profile({ user, onProfileUpdate }) {
       setConfirmPassword('');
     } catch (err) {
       console.error(err);
-      setErrorMsg(err.message || 'Current password authentication failed.');
+      showError(err.message || 'Current password authentication failed.');
     } finally {
       setLoading(false);
     }
@@ -133,8 +204,7 @@ export default function Profile({ user, onProfileUpdate }) {
             {/* User Avatar */}
             <div className="flex items-center space-x-5 border-b border-gray-50 pb-5">
               <img
-                src={profilePhoto || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150'}
-                alt="avatar"
+               src={profilePhoto || defaultAvatar}
                 className="w-16 h-16 rounded-2xl object-cover ring-4 ring-emerald-500/10 shrink-0"
               />
               <div className="space-y-1.5 flex-1 text-left">
@@ -157,6 +227,13 @@ export default function Profile({ user, onProfileUpdate }) {
                     />
                   </label>
                   <span className="text-[10px] text-gray-400">JPG, PNG or WEBP up to 5MB</span>
+                  <button
+  type="button"
+  onClick={() => setProfilePhoto(defaultAvatar)}
+  className="cursor-pointer bg-red-50 hover:bg-red-100 border border-red-200 text-red-600 px-4 py-2 rounded-xl text-xs font-bold transition"
+>
+  Remove Photo
+</button>
                 </div>
               </div>
             </div>
@@ -178,7 +255,7 @@ export default function Profile({ user, onProfileUpdate }) {
                 <label className="text-xs font-bold text-gray-750 block">Account Full Name</label>
                 <input
                   type="text"
-                  required
+                
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Johnathan Doe"
@@ -191,7 +268,7 @@ export default function Profile({ user, onProfileUpdate }) {
                 <label className="text-xs font-bold text-gray-705 block">Account Phone Contact</label>
                 <input
                   type="tel"
-                  required
+                
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+1 (555) 000-0000"
@@ -234,7 +311,7 @@ export default function Profile({ user, onProfileUpdate }) {
               <label className="text-xs font-bold text-gray-700 block">Current Password credential</label>
               <input
                 type="password"
-                required
+              
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
                 placeholder="••••••••"
@@ -246,7 +323,7 @@ export default function Profile({ user, onProfileUpdate }) {
               <label className="text-xs font-bold text-gray-700 block">Choose New Password Combination</label>
               <input
                 type="password"
-                required
+              
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
                 placeholder="••••••••"
@@ -258,7 +335,7 @@ export default function Profile({ user, onProfileUpdate }) {
               <label className="text-xs font-bold text-gray-700 block">Confirm New Password Combination</label>
               <input
                 type="password"
-                required
+              
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="••••••••"

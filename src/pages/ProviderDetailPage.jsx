@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, Star, Briefcase, Calendar, Layers, Image as ImageIcon, MessageSquare, ArrowLeft } from 'lucide-react';
 import { api } from '../services/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-export default function ProviderDetailPage({ providerId }) {
+export default function ProviderDetailPage() {
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [provider, setProvider] = useState(null);
@@ -14,7 +15,7 @@ export default function ProviderDetailPage({ providerId }) {
   useEffect(() => {
     async function loadProviderInfo() {
       try {
-        const response = await api.getProviderById(providerId);
+        const response = await api.getProviderById(id);
         setProvider(response.provider);
         setBlockedDates(response.blockedDates || []);
       } catch (err) {
@@ -24,7 +25,7 @@ export default function ProviderDetailPage({ providerId }) {
       }
     }
     loadProviderInfo();
-  }, [providerId]);
+ }, [id]);
 
   if (loading) {
     return (

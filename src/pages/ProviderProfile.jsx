@@ -13,12 +13,38 @@ export default function ProviderProfile({ user, onProfileUpdate }) {
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const showError = (message) => {
+  setErrorMsg(message);
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
 
   const handleProfileSave = async (e) => {
     e.preventDefault();
     setSuccessMsg('');
     setErrorMsg('');
-    setLoading(true);
+   
+    if (!businessName.trim()) {
+    showError('Business / Trade Name is required.');
+  return;
+}
+if (!experience) {
+  showError('Trade Experience is required.');
+  return;
+}
+
+if (isNaN(experience) || Number(experience) < 0) {
+  showError('Trade Experience must be a valid number.');
+  return;
+}
+if (!description.trim()) {
+  showError('Company Bio is required.');
+  return;
+}
+ setLoading(true);
 
     try {
       const response = await api.updateProviderProfile({
@@ -31,7 +57,9 @@ export default function ProviderProfile({ user, onProfileUpdate }) {
       });
 
       // Update parent credentials context
-      onProfileUpdate(response.user);
+     if (typeof onProfileUpdate === 'function') {
+     onProfileUpdate(response.user);
+}
       setSuccessMsg('Business Specialist details successfully saved!');
     } catch (err) {
       console.error(err);
@@ -70,7 +98,7 @@ export default function ProviderProfile({ user, onProfileUpdate }) {
         {/* Profile photo Upload */}
         <div className="flex items-center space-x-4 border-b border-gray-50 pb-5">
           <img
-            src={profilePhoto || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150'}
+           src={profilePhoto || defaultAvatar}
             alt="Business Representative"
             className="w-16 h-16 rounded-2xl object-cover ring-4 ring-emerald-500/10 shrink-0"
           />
@@ -117,7 +145,7 @@ export default function ProviderProfile({ user, onProfileUpdate }) {
             <label className="text-xs font-bold text-gray-700 block">Business / Trade Name</label>
             <input
               type="text"
-              required
+            
               value={businessName}
               onChange={(e) => setBusinessName(e.target.value)}
               placeholder="e.g. AC Repair Pros Corp"
@@ -146,7 +174,7 @@ export default function ProviderProfile({ user, onProfileUpdate }) {
             <label className="text-xs font-bold text-gray-750 block">Trade Experience (Years)</label>
             <input
               type="number"
-              required
+            
               value={experience}
               onChange={(e) => setExperience(e.target.value)}
               placeholder="e.g. 5"
@@ -155,41 +183,46 @@ export default function ProviderProfile({ user, onProfileUpdate }) {
             />
           </div>
 
-          {/* Compliance doc upload */}
-          <div className="space-y-1 sm:col-span-2">
-            <label className="text-xs font-bold text-gray-750 block">Compliance File Document (Trade License / ID)</label>
-            <div className="relative text-left">
-              <label className="flex items-center justify-between w-full bg-transparent px-4 py-2.5 text-xs text-gray-800 border border-gray-200 rounded-xl cursor-pointer hover:border-emerald-500 hover:bg-emerald-50/5 transition duration-150">
-                <span className="truncate max-w-[300px] font-mono text-gray-650 flex items-center">
-                  <FileText size={15} className="mr-2 text-gray-400 shrink-0" />
-                  {verificationDocument ? (verificationDocument.startsWith('data:') ? '📄 Document Uploaded' : verificationDocument) : 'Select compliance document file...'}
-                </span>
-                <span className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-lg text-[10px] font-bold shrink-0 transition">
-                  Browse
-                </span>
-                <input
-                  type="file"
-                  accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-                  className="hidden"
-                  onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                      const reader = new FileReader();
-                      reader.onloadend = () => setVerificationDocument(reader.result);
-                      reader.readAsDataURL(file);
-                    }
-                  }}
-                />
-              </label>
-            </div>
-            <p className="text-[10px] text-gray-400 text-left">PDF, DOC, JPG or PNG format supported</p>
-          </div>
+         {/* Compliance doc upload (Read Only) */}
+         {/* Compliance doc upload (Read Only) */}
+<div className="space-y-1 sm:col-span-2">
+  <label className="text-xs font-bold text-gray-750 block">
+    Compliance File Document (Trade License / ID)
+  </label>
+
+  <button
+    type="button"
+    onClick={() => {
+      const link = document.createElement('a');
+      link.href = verificationDocument;
+      link.download = 'License_Document.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }}
+    className="flex items-center justify-between w-full bg-transparent px-4 py-2.5 text-xs text-gray-800 border border-gray-200 rounded-xl hover:border-emerald-500 hover:bg-emerald-50/5 transition duration-150"
+  >
+    <span className="truncate max-w-[300px] font-mono text-gray-650 flex items-center">
+      <FileText size={15} className="mr-2 text-gray-400 shrink-0" />
+      Download Uploaded Document
+    </span>
+
+    <span className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-lg text-[10px] font-bold shrink-0 transition">
+      Download
+    </span>
+  </button>
+
+  <p className="text-[10px] text-red-500 text-left font-semibold">
+    Verification document is locked after registration and cannot be modified.
+  </p>
+</div>
+
 
           {/* Description */}
           <div className="space-y-1 sm:col-span-2">
             <label className="text-xs font-bold text-gray-700 block">Company bio guidelines & summary (Visible to patrons)</label>
             <textarea
-              required
+            
               rows={4}
               value={description}
               onChange={(e) => setDescription(e.target.value)}

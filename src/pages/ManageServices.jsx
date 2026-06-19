@@ -213,7 +213,7 @@ export default function ManageServices() {
             <label className="text-xs font-bold text-gray-700 block">Service Title</label>
             <input
               type="text"
-              required
+            
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g. Split AC Deep jet cleanup repair"
@@ -229,7 +229,7 @@ export default function ManageServices() {
               <input
                 type="number"
                 step="0.01"
-                required
+              
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder="49.00"
@@ -242,7 +242,7 @@ export default function ManageServices() {
               <label className="text-xs font-bold text-gray-700 block">Duration (Minutes)</label>
               <input
                 type="number"
-                required
+              
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
                 placeholder="60"
@@ -289,7 +289,7 @@ export default function ManageServices() {
           <div className="space-y-1">
             <label className="text-xs font-bold text-gray-705 block">Broad description guidelines</label>
             <textarea
-              required
+            
               rows={4}
               value={description}
               onChange={(e) => setDescription(e.target.value)}

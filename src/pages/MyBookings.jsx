@@ -318,7 +318,7 @@ export default function MyBookings(){
           <div className="space-y-1">
             <label className="text-xs font-bold text-gray-750 block">Audit comment / feedback</label>
             <textarea
-              required
+            
               rows={4}
               value={reviewComment}
               onChange={(e) => setReviewComment(e.target.value)}

@@ -6,6 +6,8 @@ export default function Payments()  {
   const navigate = useNavigate();
   const location = useLocation();
   const bookingId = location.state?.bookingId;
+  const serviceId = location.state?.serviceId;
+  const providerId = location.state?.providerId; 
   console.log("Booking ID received:", bookingId);
   if (!bookingId) {
   return (
@@ -29,9 +31,9 @@ export default function Payments()  {
   const [success, setSuccess] = useState(false);
 
   // Card fields mockup
-  const [cardNumber, setCardNumber] = useState('4111 2222 3333 4444');
-  const [cardExpiry, setCardExpiry] = useState('09/29');
-  const [cardCvv, setCardCvv] = useState('188');
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardExpiry, setCardExpiry] = useState('');
+  const [cardCvv, setCardCvv] = useState('');
 
   useEffect(() => {
     async function loadBill() {
@@ -52,8 +54,53 @@ export default function Payments()  {
     }
     loadBill();
   }, [bookingId]);
-  const handleExecutePayment = async (e) => {
+  const showError = (message) => {
+  setErrorMsg(message);
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
+const handleExecutePayment = async (e) => {
   if (e) e.preventDefault();
+
+  setErrorMsg('');
+
+  if (paymentMethod === 'Card') {
+     if (!cardNumber.trim()) {
+  showError('Credit Card Number is required.');
+  return;
+}
+
+const cleanCardNumber = cardNumber.replace(/\s/g, '');
+
+if (!/^\d{16}$/.test(cleanCardNumber)) {
+  showError('Credit Card Number must contain exactly 16 digits.');
+  return;
+}
+
+if (!cardExpiry.trim()) {
+  showError('Expiry Date is required.');
+  return;
+}
+
+if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(cardExpiry.trim())) {
+  showError('Expiry Date must be in MM/YY format.');
+  return;
+}
+
+if (!cardCvv.trim()) {
+  showError('CVV Code is required.');
+  return;
+}
+
+if (!/^\d{3,4}$/.test(cardCvv.trim())) {
+  showError('CVV Code must contain 3 or 4 digits.');
+  return;
+}
+  }
+
   localStorage.setItem(`payment_${bookingId}`, 'paid');
   setSuccess(true);
 
@@ -108,7 +155,14 @@ export default function Payments()  {
       {/* Back button */}
       <div>
         <button
-          onClick={() => navigate('/customer-bookings')}
+          onClick={() =>
+    navigate('/book', {
+      state: {
+        serviceId,
+        providerId
+      }
+    })
+  }
           className="inline-flex items-center space-x-1.5 text-xs font-bold text-gray-400 hover:text-emerald-600 transition tracking-wider uppercase mb-2"
         >
           <ArrowLeft size={14} />
@@ -166,9 +220,17 @@ export default function Payments()  {
                   <label className="text-xs font-bold text-gray-700 block">Credit Card Number</label>
                   <input
                     type="text"
-                    required
+                  
                     value={cardNumber}
-                    onChange={(e) => setCardNumber(e.target.value)}
+                    onChange={(e) => {
+  const value = e.target.value
+    .replace(/\D/g, '')
+    .slice(0, 16);
+
+  const formatted = value.replace(/(.{4})/g, '$1 ').trim();
+
+  setCardNumber(formatted);
+}}
                     placeholder="xxxx xxxx xxxx xxxx"
                     className="w-full bg-transparent px-4 py-2.5 text-xs text-gray-800 border border-gray-200 rounded-xl focus:outline-none focus:border-emerald-500 font-medium"
                   />
@@ -179,9 +241,18 @@ export default function Payments()  {
                     <label className="text-xs font-bold text-gray-700 block">Expiry Date</label>
                     <input
                       type="text"
-                      required
+                    
                       value={cardExpiry}
-                      onChange={(e) => setCardExpiry(e.target.value)}
+                      onChange={(e) => {
+  let value = e.target.value.replace(/\D/g, '');
+
+  if (value.length >= 3) {
+    value = value.slice(0, 2) + '/' + value.slice(2, 4);
+  }
+
+  setCardExpiry(value);
+}}
+maxLength={5}
                       placeholder="MM/YY"
                       className="w-full bg-transparent px-4 py-2.5 text-xs text-gray-800 border border-gray-200 rounded-xl focus:outline-none focus:border-emerald-500 font-medium"
                     />
@@ -190,11 +261,15 @@ export default function Payments()  {
                     <label className="text-xs font-bold text-gray-700 block">CVV Code</label>
                     <input
                       type="password"
-                      required
+                    
                       value={cardCvv}
-                      onChange={(e) => setCardCvv(e.target.value)}
+                      onChange={(e) => {
+  setCardCvv(
+    e.target.value.replace(/\D/g, '').slice(0, 4)
+  );
+}}
+maxLength={4}
                       placeholder="xxx"
-                      maxLength={4}
                       className="w-full bg-transparent px-4 py-2.5 text-xs text-gray-800 border border-gray-200 rounded-xl focus:outline-none focus:border-emerald-500 font-medium"
                     />
                   </div>

@@ -57,23 +57,31 @@ export default function BookAppointment({ user }){
 
   loadServiceSpecs();
 }, [serviceId]);
+const showError = (message) => {
+  setErrorMsg(message);
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg('');
 
     if (!bookingDate) {
-      setErrorMsg('Choose a date first');
+       showError('Choose a date first');
       return;
     }
 
     if (!bookingTime) {
-      setErrorMsg('Please select an active hourly time slot.');
+       showError('Please select an active hourly time slot.');
       return;
     }
 
     if (!address) {
-      setErrorMsg('Client physical delivery address is mandatory.');
+       showError('Client physical delivery address is mandatory.');
       return;
     }
 
@@ -91,12 +99,15 @@ export default function BookAppointment({ user }){
 
       // Shift straight to Checkout payment page passing the newly created Booking ID!
        navigate('/payment', {
-  state: { bookingId: response.bookingId }
+  state: {
+    bookingId: response.bookingId,
+    serviceId,
+    providerId
+  }
 });
-
     } catch (err) {
       console.error(err);
-      setErrorMsg(err.message || 'The selected slot has already been booked. Please pick another date or hour.');
+      showError(err.message || 'The selected slot has already been booked. Please pick another date or hour.');
     } finally {
       setBookingLoading(false);
     }
@@ -170,7 +181,7 @@ export default function BookAppointment({ user }){
           </label>
           <input
             type="date"
-            required
+          
             min={todayString}
             value={bookingDate}
             onChange={(e) => setBookingDate(e.target.value)}
@@ -215,7 +226,7 @@ export default function BookAppointment({ user }){
             <span>Service Delivery Address</span>
           </label>
           <textarea
-            required
+          
             rows={2.5}
             value={address}
             onChange={(e) => setAddress(e.target.value)}

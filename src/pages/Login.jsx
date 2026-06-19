@@ -11,13 +11,20 @@ export default function Login({ onLoginSuccess }) {
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const showError = (message) => {
+  setErrorMsg(message);
 
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg('');
     
     if (!email || !password) {
-      setErrorMsg('Mandatory email and password credentials are missing.');
+       showError('Mandatory email and password credentials are missing.');
       return;
     }
 
@@ -42,7 +49,7 @@ export default function Login({ onLoginSuccess }) {
 
     } catch (err) {
       console.error(err);
-      setErrorMsg(err.message || 'Login credentials invalid. Please try again.');
+       showError(err.message || 'Login credentials invalid. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -82,7 +89,7 @@ export default function Login({ onLoginSuccess }) {
               </span>
               <input
                 type="email"
-                required
+               
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
@@ -100,7 +107,7 @@ export default function Login({ onLoginSuccess }) {
               </span>
               <input
                 type="password"
-                required
+              
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"

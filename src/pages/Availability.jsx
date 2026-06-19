@@ -88,7 +88,7 @@ export default function Availability() {
               <label className="text-[10px] text-gray-400 font-black uppercase tracking-wider block">Choose Calendar Date</label>
               <input
                 type="date"
-                required
+                
                 value={newBlockedDate}
                 onChange={(e) => setNewBlockedDate(e.target.value)}
                 min={new Date().toISOString().split('T')[0]}

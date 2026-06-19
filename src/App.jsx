@@ -21,7 +21,7 @@ import ManageBookings from './pages/ManageBookings';
 import Availability from './pages/Availability';
 import ProviderProfile from "./pages/ProviderProfile";
 import AdminDashboard from './pages/AdminDashboard';
-
+import ScrollToTop from "./components/ScrollToTop";
 import { api } from './services/api';
 
 /* =========================
@@ -123,8 +123,10 @@ function AppCore() {
   }
 
   return (
+     
  
     <div className="min-h-screen flex flex-col">
+       <ScrollToTop />
          <Navbar
   user={user}
   onLogout={onLogout}
@@ -156,7 +158,7 @@ function AppCore() {
 <Route path="/profile" element={<Profile user={user} />} />
 <Route path="/provider-profile" element={<ProviderProfile user={user} />} />
 <Route path="/provider/:id" element={<ProviderDetailPage />} />
-
+<Route path="/profile" element={<Profile user={user} onProfileUpdate={setUser} />}/>
 <Route path="/admin" element={<AdminDashboard user={user} />} />
         </Routes>
       </main>
