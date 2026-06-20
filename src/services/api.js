@@ -21,7 +21,12 @@ async function request(endpoint, options = {}) {
   }
 
   const response = await fetch(`/api${endpoint}`, config);
-  const data = await response.json();
+  let data;
+try {
+  data = await response.json();
+} catch (err) {
+  throw new Error('Server returned empty response');
+}
 
   if (!response.ok) {
     throw new Error(data.message || 'API request failed');
@@ -172,4 +177,8 @@ export const api = {
     method: 'PUT',
     body: { action: 'complete' },
   }),
+  forgotPassword: (data) => request('/auth/forgot-password', {
+  method: 'POST',
+  body: data,
+}),
 };

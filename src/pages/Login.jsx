@@ -10,50 +10,108 @@ export default function Login({ onLoginSuccess }) {
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
-  const showError = (message) => {
-  setErrorMsg(message);
+  const [loginError, setLoginError] = useState('');
+  const [resetError, setResetError] = useState('');
+  const [errorType, setErrorType] = useState('error'); 
+// 'error' | 'success'
+  const [mode, setMode] = useState('login'); 
+// 'login' | 'reset'
+
+ const [resetEmail, setResetEmail] = useState('');
+ const [resetPhone, setResetPhone] = useState('');
+ const [resetPassword, setResetPassword] = useState('');
+ const [resetLoading, setResetLoading] = useState(false);
+ const [resetMsg, setResetMsg] = useState('');
+ const showLoginError = (message) => {
+  setErrorType('error');
+  setLoginError(message);
+
 
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
   });
 };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrorMsg('');
-    
-    if (!email || !password) {
-       showError('Mandatory email and password credentials are missing.');
-      return;
-    }
+const showResetError = (message) => {
+  setResetError(message);
 
-    setLoading(true);
-    try {
-      const response = await api.login({ email, password });
-      
-      // Save token
-      localStorage.setItem('token', response.token);
-      
-      // Fire success callback
-      const user = response.user;
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
+const showSuccess = (message) => {
+  setErrorType('success');
+  setLoginError(message);
 
-// Save user
-     onLoginSuccess(user);
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 
-// Redirect based on role
-     if (user.roleId === 1) navigate('/customer-dashboard');
-     else if (user.roleId === 2) navigate('/provider-dashboard');
-     else if (user.roleId === 3) navigate('/admin');
-     else navigate('/');
+  // auto clear after 3 seconds (optional but recommended)
+  setTimeout(() => setLoginError(''), 3000);
+};
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoginError('');
 
-    } catch (err) {
-      console.error(err);
-       showError(err.message || 'Login credentials invalid. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (!email || !password) {
+    showLoginError('Mandatory email and password credentials are missing.');
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const response = await api.login({ email, password });
+
+    localStorage.setItem('token', response.token);
+
+    const user = response.user;
+    onLoginSuccess(user);
+
+    if (user.roleId === 1) navigate('/customer-dashboard');
+    else if (user.roleId === 2) navigate('/provider-dashboard');
+    else if (user.roleId === 3) navigate('/admin');
+    else navigate('/');
+  } catch (err) {
+    console.error(err);
+    showLoginError(err.message || 'Login credentials invalid. Please try again.');
+  } finally {
+    setLoading(false);
+  }
+};
+  const handleResetSubmit = async (e) => {
+  e.preventDefault();
+  setResetMsg('');
+
+  if (!resetEmail || !resetPhone || !resetPassword) {
+    showResetError('All fields are required.');
+    return;
+  }
+
+  setResetLoading(true);
+
+  try {
+    await api.forgotPassword({
+      email: resetEmail,
+      phone: resetPhone,
+      newPassword: resetPassword,
+    });
+
+    setMode('login');
+    setResetEmail('');
+    setResetPhone('');
+    setResetPassword('');
+
+    showSuccess('Password updated successfully. Please login.');
+  } catch (err) {
+    showResetError(err.message || 'Verification failed.');
+  } finally {
+    setResetLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen pt-16 flex flex-col justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8" id="login-authorization-page">
@@ -71,14 +129,21 @@ export default function Login({ onLoginSuccess }) {
         </div>
 
         {/* Error Notification Toast Box */}
-        {errorMsg && (
-          <div className="flex items-center space-x-2.5 p-4 bg-red-50 rounded-2xl text-xs text-red-600 border border-red-100 font-semibold">
+       {mode === 'login' && loginError && (
+  <div
+    className={`flex items-center space-x-2.5 p-4 rounded-2xl text-xs font-semibold border ${
+      errorType === 'success'
+        ? 'bg-emerald-50 text-emerald-700 border-emerald-100'
+        : 'bg-red-50 text-red-600 border-red-100'
+    }`}
+  >
             <AlertCircle size={18} className="shrink-0" />
-            <span>{errorMsg}</span>
+            <span>{loginError}</span>
           </div>
         )}
 
         {/* Login Form */}
+        {mode === 'login' && (
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Email field */}
           <div className="space-y-1">
@@ -129,7 +194,11 @@ export default function Login({ onLoginSuccess }) {
             </label>
             <button
               type="button"
-              onClick={() => alert("Please contact 'admin@marketplace.com' to reset credentials.")}
+              onClick={() => {
+  setMode('reset');
+  setLoginError('');
+  setResetError('');
+}}
               className="font-bold text-emerald-600 hover:text-emerald-700"
             >
               Forgot password?
@@ -150,6 +219,69 @@ export default function Login({ onLoginSuccess }) {
             )}
           </button>
         </form>
+        )}
+        {mode === 'reset' && (
+  <form onSubmit={handleResetSubmit} className="space-y-5 mt-6">
+
+    <div className="text-center space-y-1">
+      <h3 className="text-lg font-black text-gray-900">Reset Password</h3>
+      <p className="text-xs text-gray-400">Verify your account to change password</p>
+    </div>
+
+    {resetError && (
+      <div className="p-3 bg-red-50 border border-red-100 text-red-600 text-xs rounded-xl font-semibold">
+        {resetError}
+      </div>
+    )}
+
+    {/* Email */}
+    <input
+      type="email"
+      placeholder="Registered Email"
+      value={resetEmail}
+      onChange={(e) => setResetEmail(e.target.value)}
+      className="w-full px-4 py-3 text-xs border border-gray-200 rounded-xl"
+    />
+
+    {/* Phone */}
+    <input
+      type="text"
+      placeholder="Registered Phone Number"
+      value={resetPhone}
+      onChange={(e) => setResetPhone(e.target.value)}
+      className="w-full px-4 py-3 text-xs border border-gray-200 rounded-xl"
+    />
+
+    {/* New Password */}
+    <input
+      type="password"
+      placeholder="New Password"
+      value={resetPassword}
+      onChange={(e) => setResetPassword(e.target.value)}
+      className="w-full px-4 py-3 text-xs border border-gray-200 rounded-xl"
+    />
+
+    <button
+      type="submit"
+      disabled={resetLoading}
+      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-3 rounded-xl"
+    >
+      {resetLoading ? 'Updating...' : 'Reset Password'}
+    </button>
+
+    <button
+      type="button"
+      onClick={() => {
+  setMode('login');
+  setLoginError('');
+  setResetError('');
+}}
+      className="w-full text-xs text-gray-500 hover:text-gray-700"
+    >
+      Back to Login
+    </button>
+  </form>
+)}
 
         {/* Demo Credentials Section helper */}
         <div className="p-4 bg-emerald-50/50 rounded-2xl border border-emerald-100 text-left space-y-1.5">

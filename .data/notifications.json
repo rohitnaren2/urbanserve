@@ -1192,8 +1192,9 @@
     "user_id": 5,
     "title": "Booking Update: Status is ACCEPTED",
     "message": "Your service request has been ACCEPTED by the professional and scheduled!",
-    "is_read": false,
-    "created_at": "2026-06-20T05:06:54.522Z"
+    "is_read": true,
+    "created_at": "2026-06-20T05:06:54.522Z",
+    "updated_at": "2026-06-20T06:35:20.062Z"
   },
   {
     "id": 135,
@@ -1208,8 +1209,9 @@
     "user_id": 5,
     "title": "Booking Update: Status is ACCEPTED",
     "message": "Your service request has been ACCEPTED by the professional and scheduled!",
-    "is_read": false,
-    "created_at": "2026-06-20T05:07:01.385Z"
+    "is_read": true,
+    "created_at": "2026-06-20T05:07:01.385Z",
+    "updated_at": "2026-06-20T06:35:20.067Z"
   },
   {
     "id": 137,
@@ -1224,8 +1226,9 @@
     "user_id": 5,
     "title": "Booking Update: Status is COMPLETED",
     "message": "Your service has been marked as COMPLETED. Please leave a review!",
-    "is_read": false,
-    "created_at": "2026-06-20T05:07:09.094Z"
+    "is_read": true,
+    "created_at": "2026-06-20T05:07:09.094Z",
+    "updated_at": "2026-06-20T06:35:20.070Z"
   },
   {
     "id": 139,
@@ -1240,8 +1243,9 @@
     "user_id": 5,
     "title": "Booking Update: Status is COMPLETED",
     "message": "Your service has been marked as COMPLETED. Please leave a review!",
-    "is_read": false,
-    "created_at": "2026-06-20T05:07:15.276Z"
+    "is_read": true,
+    "created_at": "2026-06-20T05:07:15.276Z",
+    "updated_at": "2026-06-20T06:35:20.072Z"
   },
   {
     "id": 141,
@@ -1256,8 +1260,9 @@
     "user_id": 5,
     "title": "Booking Update: Status is ACCEPTED",
     "message": "Your service request has been ACCEPTED by the professional and scheduled!",
-    "is_read": false,
-    "created_at": "2026-06-20T05:18:28.114Z"
+    "is_read": true,
+    "created_at": "2026-06-20T05:18:28.114Z",
+    "updated_at": "2026-06-20T06:35:20.074Z"
   },
   {
     "id": 143,
@@ -1272,8 +1277,9 @@
     "user_id": 5,
     "title": "Booking Update: Status is ACCEPTED",
     "message": "Your service request has been ACCEPTED by the professional and scheduled!",
-    "is_read": false,
-    "created_at": "2026-06-20T05:18:32.396Z"
+    "is_read": true,
+    "created_at": "2026-06-20T05:18:32.396Z",
+    "updated_at": "2026-06-20T06:35:20.075Z"
   },
   {
     "id": 145,
@@ -1288,8 +1294,9 @@
     "user_id": 5,
     "title": "Booking Update: Status is COMPLETED",
     "message": "Your service has been marked as COMPLETED. Please leave a review!",
-    "is_read": false,
-    "created_at": "2026-06-20T05:18:41.843Z"
+    "is_read": true,
+    "created_at": "2026-06-20T05:18:41.843Z",
+    "updated_at": "2026-06-20T06:35:20.077Z"
   },
   {
     "id": 147,
@@ -1304,8 +1311,9 @@
     "user_id": 5,
     "title": "Booking Update: Status is COMPLETED",
     "message": "Your service has been marked as COMPLETED. Please leave a review!",
-    "is_read": false,
-    "created_at": "2026-06-20T05:19:06.011Z"
+    "is_read": true,
+    "created_at": "2026-06-20T05:19:06.011Z",
+    "updated_at": "2026-06-20T06:35:20.081Z"
   },
   {
     "id": 149,
@@ -1320,8 +1328,9 @@
     "user_id": 5,
     "title": "Booking Update: Status is COMPLETED",
     "message": "Your service has been marked as COMPLETED. Please leave a review!",
-    "is_read": false,
-    "created_at": "2026-06-20T05:22:47.349Z"
+    "is_read": true,
+    "created_at": "2026-06-20T05:22:47.349Z",
+    "updated_at": "2026-06-20T06:35:20.084Z"
   },
   {
     "id": 151,

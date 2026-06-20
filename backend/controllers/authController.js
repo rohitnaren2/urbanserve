@@ -367,3 +367,52 @@ export const updateProviderProfile = async (req, res) => {
     res.status(500).json({ message: 'Error saving provider professional profile' });
   }
 };
+export const forgotPassword = async (req, res) => {
+  try {
+    const { email, phone, newPassword } = req.body;
+
+    if (!email || !phone || !newPassword) {
+      return res.status(400).json({
+        message: 'Email, phone and new password are required'
+      });
+    }
+
+    // find user
+    const users = dbQuery.where(
+      'users',
+      u => u.email.toLowerCase() === email.toLowerCase()
+    );
+
+    if (users.length === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const user = users[0];
+
+    // match phone
+    if (user.phone !== phone) {
+      return res.status(400).json({
+        message: 'Phone number does not match registered account'
+      });
+    }
+
+    // hash new password
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(newPassword, salt);
+
+    // update user
+    dbQuery.update('users', user.id, {
+      password: hashedPassword
+    });
+
+    return res.status(200).json({
+      message: 'Password updated successfully'
+    });
+
+  } catch (error) {
+    console.error('Forgot password error:', error);
+    return res.status(500).json({
+      message: 'Server error while resetting password'
+    });
+  }
+};
