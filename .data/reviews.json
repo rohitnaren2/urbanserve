@@ -1,23 +1,5 @@
 [
   {
-    "id": 1,
-    "booking_id": 99,
-    "customer_id": 4,
-    "provider_id": 1,
-    "rating": 5,
-    "comment": "Absolutely spectacular air conditioner job! The expert found why it stayed warm so quickly and fixed it in half an hour. Prompt and super tidy!",
-    "created_at": "2026-06-17T03:11:07.063Z"
-  },
-  {
-    "id": 2,
-    "booking_id": 98,
-    "customer_id": 4,
-    "provider_id": 2,
-    "rating": 5,
-    "comment": "Highly recommended! The cleaning experts left the kitchen spotless and very fragrant. Excellent value.",
-    "created_at": "2026-06-17T03:11:07.063Z"
-  },
-  {
     "id": 3,
     "booking_id": 3,
     "customer_id": 5,
@@ -70,5 +52,14 @@
     "rating": 5,
     "comment": "wonderful",
     "created_at": "2026-06-18T10:39:39.636Z"
+  },
+  {
+    "id": 9,
+    "booking_id": 34,
+    "customer_id": 5,
+    "provider_id": 4,
+    "rating": 4,
+    "comment": "very good work",
+    "created_at": "2026-06-20T03:45:01.330Z"
   }
 ]

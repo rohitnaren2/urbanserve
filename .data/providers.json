@@ -1,35 +1,5 @@
 [
   {
-    "id": 1,
-    "user_id": 2,
-    "business_name": "Supercool Klimat Services",
-    "category": "AC Repair",
-    "experience": 5,
-    "description": "Over 5 years of experience in repairing split, window, and central air conditioning systems. Prompt service, original parts, and a 30-day labor warranty on all repairs.",
-    "verification_document": "ac_license_102.pdf",
-    "status": "approved",
-    "rating": 4.8,
-    "completed_jobs": 24,
-    "certificates": "Certified HVAC Expert, Eco-Cool Certified",
-    "skills": "Thermostat replacement, Gas charging, Condenser cleaning, Leak repairs",
-    "created_at": "2026-06-17T03:11:07.062Z"
-  },
-  {
-    "id": 2,
-    "user_id": 3,
-    "business_name": "Sparkle Clean & Sanitization",
-    "category": "Cleaning",
-    "experience": 3,
-    "description": "Elite home and office deep cleaning specialists. We bring eco-friendly certified detergents and state-of-the-art steam vacuum machinery to leave your space immaculate.",
-    "verification_document": "cleaner_license_204.pdf",
-    "status": "approved",
-    "rating": 4.9,
-    "completed_jobs": 42,
-    "certificates": "Professional Sanitization Specialist",
-    "skills": "Deep carpet cleaning, Sofa steam cleaning, Kitchen sanitization, Window washing",
-    "created_at": "2026-06-17T03:11:07.062Z"
-  },
-  {
     "id": 3,
     "user_id": 6,
     "business_name": "Ac Doctor",
@@ -53,11 +23,12 @@
     "experience": 5,
     "description": "",
     "verification_document": "trade_license_document.pdf",
-    "status": "pending",
-    "rating": 5,
-    "completed_jobs": 0,
+    "status": "approved",
+    "rating": 4,
+    "completed_jobs": 1,
     "skills": "",
     "certificates": "",
-    "created_at": "2026-06-18T09:05:01.985Z"
+    "created_at": "2026-06-18T09:05:01.985Z",
+    "updated_at": "2026-06-20T03:45:01.337Z"
   }
 ]

@@ -13,42 +13,6 @@
     "updated_at": "2026-06-19T15:30:52.066Z"
   },
   {
-    "id": 2,
-    "full_name": "John AC Specialist",
-    "email": "provider@marketplace.com",
-    "phone": "9876543210",
-    "password": "$2b$10$Eg9ZffdtGDCmiuZdZ6u/Kuvu30.134i1fw4hVxupJGCbaWxTdQ4fG",
-    "role_id": 2,
-    "profile_photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
-    "address": "45 Blue Breeze St, Tech District",
-    "is_blocked": false,
-    "created_at": "2026-06-17T03:11:07.061Z"
-  },
-  {
-    "id": 3,
-    "full_name": "Sarah Cleaning Guru",
-    "email": "sarah@provider.com",
-    "phone": "5551234567",
-    "password": "$2b$10$Eg9ZffdtGDCmiuZdZ6u/Kuvu30.134i1fw4hVxupJGCbaWxTdQ4fG",
-    "role_id": 2,
-    "profile_photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
-    "address": "77 Clean Sparkle Ln, Downtown",
-    "is_blocked": false,
-    "created_at": "2026-06-17T03:11:07.061Z"
-  },
-  {
-    "id": 4,
-    "full_name": "Jane Customer",
-    "email": "customer@marketplace.com",
-    "phone": "5559876543",
-    "password": "$2b$10$Eg9ZffdtGDCmiuZdZ6u/KuWRh.AdfPPwYuc.QDQSzytUlvdQcC1Ca",
-    "role_id": 1,
-    "profile_photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
-    "address": "128 Cozy Home Apartments, Green Valley",
-    "is_blocked": false,
-    "created_at": "2026-06-17T03:11:07.061Z"
-  },
-  {
     "id": 5,
     "full_name": "kaviya ",
     "email": "kaviya@gmail.com",
@@ -81,10 +45,11 @@
     "phone": "1234567890",
     "password": "$2b$10$6ITUFLYwz49fqb8xY8s4Be5R2Z3qI6YvJUKdPr3/qvkqNa79k3qGO",
     "role_id": 2,
-    "profile_photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+    "profile_photo": "https://ui-avatars.com/api/?name=santhosh&background=10b981&color=fff",
     "address": "",
     "is_blocked": false,
-    "created_at": "2026-06-18T09:05:01.972Z"
+    "created_at": "2026-06-18T09:05:01.972Z",
+    "updated_at": "2026-06-20T03:13:49.999Z"
   },
   {
     "id": 8,

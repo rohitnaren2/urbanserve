@@ -79,144 +79,19 @@ export const dbInit = () => {
         is_blocked: false,
         created_at: new Date().toISOString()
       },
-      {
-        id: 2,
-        full_name: 'John AC Specialist',
-        email: 'provider@marketplace.com',
-        phone: '9876543210',
-        password: providerPassword,
-        role_id: 2, // Provider
-        profile_photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
-        address: '45 Blue Breeze St, Tech District',
-        is_blocked: false,
-        created_at: new Date().toISOString()
-      },
-      {
-        id: 3,
-        full_name: 'Sarah Cleaning Guru',
-        email: 'sarah@provider.com',
-        phone: '5551234567',
-        password: providerPassword,
-        role_id: 2, // Provider
-        profile_photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
-        address: '77 Clean Sparkle Ln, Downtown',
-        is_blocked: false,
-        created_at: new Date().toISOString()
-      },
-      {
-        id: 4,
-        full_name: 'Jane Customer',
-        email: 'customer@marketplace.com',
-        phone: '5559876543',
-        password: customerPassword,
-        role_id: 1, // Customer
-        profile_photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150',
-        address: '128 Cozy Home Apartments, Green Valley',
-        is_blocked: false,
-        created_at: new Date().toISOString()
-      }
+     
     ];
 
     writeTable('users', initialUsers);
 
     // Seed Providers Profile
-    const initialProviders = [
-      {
-        id: 1,
-        user_id: 2,
-        business_name: 'Supercool Klimat Services',
-        category: 'AC Repair',
-        experience: 5,
-        description: 'Over 5 years of experience in repairing split, window, and central air conditioning systems. Prompt service, original parts, and a 30-day labor warranty on all repairs.',
-        verification_document: 'ac_license_102.pdf',
-        status: 'approved',
-        rating: 4.8,
-        completed_jobs: 24,
-        certificates: 'Certified HVAC Expert, Eco-Cool Certified',
-        skills: 'Thermostat replacement, Gas charging, Condenser cleaning, Leak repairs',
-        created_at: new Date().toISOString()
-      },
-      {
-        id: 2,
-        user_id: 3,
-        business_name: 'Sparkle Clean & Sanitization',
-        category: 'Cleaning',
-        experience: 3,
-        description: 'Elite home and office deep cleaning specialists. We bring eco-friendly certified detergents and state-of-the-art steam vacuum machinery to leave your space immaculate.',
-        verification_document: 'cleaner_license_204.pdf',
-        status: 'approved',
-        rating: 4.9,
-        completed_jobs: 42,
-        certificates: 'Professional Sanitization Specialist',
-        skills: 'Deep carpet cleaning, Sofa steam cleaning, Kitchen sanitization, Window washing',
-        created_at: new Date().toISOString()
-      }
-    ];
-    writeTable('providers', initialProviders);
+ 
 
     // Seed Services
-    const initialServices = [
-      {
-        id: 1,
-        provider_id: 1, // Supercool Klimat
-        title: 'Split AC Deep Clean Repair & Service',
-        description: 'Complete jet pump wet cleaning of the indoor visual unit, outdoor unit condenser wash, filter cleanup, and a standard thermostat diagnostics report.',
-        price: '49.00',
-        duration: 60, // minutes
-        image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600'
-      },
-      {
-        id: 2,
-        provider_id: 1,
-        title: 'AC Gas Jet Refill',
-        description: 'Environmentally safe coolant gas recharge for central and split ACs, including a complete leak diagnostics and pipe wrapping treatment.',
-        price: '79.00',
-        duration: 45,
-        image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600'
-      },
-      {
-        id: 3,
-        provider_id: 2, // Sparkle Clean
-        title: 'Home Sanitization & Deep Cleaning',
-        description: 'Thorough sanitization of living rooms, bedrooms, kitchens, and washrooms. Includes floor scrubbing, vacuuming, dust treatment, and cabinet wiping.',
-        price: '119.00',
-        duration: 180,
-        image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600'
-      },
-      {
-        id: 4,
-        provider_id: 2,
-        title: 'Sofa and Carpet Steam Clean',
-        description: 'Premium hot-water extraction steaming for standard 5-seater sofas and up to 2 large area carpets. Gets rid of stubborn food stains, odors, and dust mites.',
-        price: '59.00',
-        duration: 90,
-        image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=600'
-      }
-    ];
-    writeTable('services', initialServices);
+ 
 
     // Seed Reviews
-    const initialReviews = [
-      {
-        id: 1,
-        booking_id: 99, // Static review demo
-        customer_id: 4,
-        provider_id: 1,
-        rating: 5,
-        comment: 'Absolutely spectacular air conditioner job! The expert found why it stayed warm so quickly and fixed it in half an hour. Prompt and super tidy!',
-        created_at: new Date().toISOString()
-      },
-      {
-        id: 2,
-        booking_id: 98,
-        customer_id: 4,
-        provider_id: 2,
-        rating: 5,
-        comment: 'Highly recommended! The cleaning experts left the kitchen spotless and very fragrant. Excellent value.',
-        created_at: new Date().toISOString()
-      }
-    ];
-    writeTable('reviews', initialReviews);
+    
 
     // Seed Notifications
     const initialNotifications = [

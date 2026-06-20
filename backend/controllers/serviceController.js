@@ -71,24 +71,38 @@ export const getServiceDetail = async (req, res) => {
 export const getProviderDetail = async (req, res) => {
   try {
     const { id } = req.params;
+
     const providerSum = dbQuery.getProviderSummary(id);
+
     if (!providerSum) {
       return res.status(404).json({ message: 'Service provider not found' });
     }
 
+    // 🔥 ADD THIS: fetch reviews
+    const reviews = dbQuery.where(
+      'reviews',
+      r => Number(r.provider_id) === Number(id)
+    );
+
     // Fetch availability block dates
-    const blockedDates = dbQuery.where('availability', a => a.provider_id === Number(id));
+    const blockedDates = dbQuery.where(
+      'availability',
+      a => a.provider_id === Number(id)
+    );
 
     res.status(200).json({
-      provider: providerSum,
+      provider: {
+        ...providerSum,
+        reviews: reviews   // ✅ THIS IS THE FIX
+      },
       blockedDates: blockedDates.map(b => b.blocked_date)
     });
+
   } catch (error) {
     console.error('Error getting provider review detail', error);
     res.status(500).json({ message: 'Error loading provider' });
   }
 };
-
 export const createService = async (req, res) => {
   try {
     const userId = req.user.userId;

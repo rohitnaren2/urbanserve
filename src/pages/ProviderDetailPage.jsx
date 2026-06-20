@@ -105,7 +105,7 @@ export default function ProviderDetailPage() {
             </div>
             <div className="text-center md:text-left">
               <span className="text-[10px] text-gray-400 uppercase font-black block">Jobs Done</span>
-              <span className="font-extrabold text-sm text-gray-800">{provider.completed_jobs || 12} jobs</span>
+              <span className="font-extrabold text-sm text-gray-800">{provider.completed_jobs ?? 0} jobs</span>
             </div>
           </div>
 
@@ -178,54 +178,63 @@ export default function ProviderDetailPage() {
           </div>
         )}
 
-        {/* Reviews Tab outlet */}
-        {activeTab === 'reviews' && (
-          <div className="space-y-6">
-            <h3 className="text-sm font-black text-gray-900 border-b border-gray-50 pb-2">Verified Client Appraisals</h3>
-            {provider.reviewsCount === 0 && !provider.reviews?.length ? (
-              <p className="text-xs text-gray-400 py-6">No client reviews submitted yet on completed works.</p>
-            ) : (
-              <div className="space-y-5">
-                {(provider.reviews || [
-                  {
-                    id: 1,
-                    customer_name: "Sarah Jenkins",
-                    rating: 5,
-                    comment: "Unmatched response speed on our split AC filter diagnostic. Solved water drippings instantly!",
-                    created_at: "2026-06-10",
-                    service_title: "Split AC Deep Clean Repair"
-                  },
-                  {
-                    id: 2,
-                    customer_name: "Marcus Aurelius",
-                    rating: 4,
-                    comment: "Highly efficient team, washed sofas and kitchen cabinets spotless on time.",
-                    created_at: "2026-06-03",
-                    service_title: "Home Sanitization Household"
-                  }
-                ]).map((rev) => (
-                  <div key={rev.id} className="p-4 bg-gray-50 rounded-2xl text-xs space-y-2.5">
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-2">
-                        <div className="font-extrabold text-gray-900">{rev.customer_name}</div>
-                        <span className="text-[10px] text-gray-400">Verified Client</span>
-                      </div>
-                      <div className="flex items-center space-x-1 text-amber-500 font-bold">
-                        <Star size={11} fill="currentColor" />
-                        <span>{rev.rating}</span>
-                      </div>
-                    </div>
-                    <p className="text-gray-600 leading-relaxed italic">"{rev.comment}"</p>
-                    <div className="flex justify-between text-[10px] text-gray-400 font-medium">
-                      <span>Service: <strong className="text-gray-600">{rev.service_title || 'General'}</strong></span>
-                      <span>{new Date(rev.created_at || '2026-06-15').toLocaleDateString()}</span>
-                    </div>
-                  </div>
-                ))}
+       {/* Reviews Tab outlet */}
+{activeTab === 'reviews' && (
+  <div className="space-y-6">
+    <h3 className="text-sm font-black text-gray-900 border-b border-gray-50 pb-2">
+      Verified Client Appraisals
+    </h3>
+
+    {provider.reviews && provider.reviews.length > 0 ? (
+      <div className="space-y-5">
+        {provider.reviews.map((rev) => (
+          <div key={rev.id} className="p-4 bg-gray-50 rounded-2xl text-xs space-y-2.5">
+            
+            <div className="flex justify-between items-center">
+              <div className="flex items-center space-x-2">
+                <div className="font-extrabold text-gray-900">
+                  {rev.customer_name}
+                </div>
+                <span className="text-[10px] text-gray-400">
+                  Verified Client
+                </span>
               </div>
-            )}
+
+              <div className="flex items-center space-x-1 text-amber-500 font-bold">
+                <Star size={11} fill="currentColor" />
+                <span>{rev.rating}</span>
+              </div>
+            </div>
+
+            <p className="text-gray-600 leading-relaxed italic">
+              "{rev.comment}"
+            </p>
+
+            <div className="flex justify-between text-[10px] text-gray-400 font-medium">
+              <span>
+                Service:{" "}
+                <strong className="text-gray-600">
+                  {rev.service_title || "General"}
+                </strong>
+              </span>
+
+              <span>
+                {rev.created_at
+                  ? new Date(rev.created_at).toLocaleDateString()
+                  : ""}
+              </span>
+            </div>
+
           </div>
-        )}
+        ))}
+      </div>
+    ) : (
+      <p className="text-xs text-gray-400 py-6">
+        No client reviews submitted yet on completed works.
+      </p>
+    )}
+  </div>
+)}
 
         {/* Availability Tab outlet */}
         {activeTab === 'availability' && (
