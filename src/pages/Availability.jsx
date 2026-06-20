@@ -8,6 +8,21 @@ export default function Availability() {
   const [newBlockedDate, setNewBlockedDate] = useState('');
   const [syncLoading, setSyncLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [notification, setNotification] = useState(null);
+  const [confirmModal, setConfirmModal] = useState({
+  isOpen: false,
+  date: null
+});
+
+ const triggerToast = (msg, isError = false) => {
+  setNotification({ message: msg, isError });
+
+  setTimeout(() => {
+    setNotification((curr) =>
+      curr && curr.message === msg ? null : curr
+    );
+  }, 4500);
+};
 
   useEffect(() => {
     loadBlockedDates();
@@ -38,7 +53,7 @@ export default function Availability() {
 
     try {
       await api.addBlockedDate(newBlockedDate);
-      alert('Calendar date successfully blocked! Customers cannot book you style on this date.');
+      triggerToast('Calendar date successfully blocked!');
       setNewBlockedDate('');
       loadBlockedDates();
     } catch (err) {
@@ -49,17 +64,17 @@ export default function Availability() {
     }
   };
 
-  const handleRemoveBlock = async (date) => {
-    if (!window.confirm(`Unlock availability and remove holiday blocks on ${date}?`)) return;
-
-    try {
-      await api.removeBlockedDate(date);
-      alert('Holiday block removed. Date is available again!');
-      loadBlockedDates();
-    } catch (err) {
-      alert(err.message || 'Error unlocking date.');
-    }
-  };
+const confirmRemoveBlock = async () => {
+  try {
+    await api.removeBlockedDate(confirmModal.date);
+    triggerToast('Holiday block removed!');
+    loadBlockedDates();
+  } catch (err) {
+    triggerToast(err.message || 'Error unlocking date.', true);
+  } finally {
+    setConfirmModal({ isOpen: false, date: null });
+  }
+};
 
   return (
     <div className="max-w-2xl mx-auto space-y-6 text-left" id="provider-availability-scheduler">
@@ -135,12 +150,15 @@ export default function Availability() {
                 <div key={date} className="p-3 bg-red-50/40 rounded-xl border border-red-100/40 flex justify-between items-center" id={`locked-date-item-${date}`}>
                   <span className="font-mono text-xs text-red-700 font-bold">{date}</span>
                   <button
-                    onClick={() => handleRemoveBlock(date)}
+                    onClick={() =>
+  setConfirmModal({ isOpen: true, date })
+}
                     className="p-1 px-2.5 border border-red-200 text-red-500 bg-white hover:bg-red-50 text-[10px] font-bold rounded-lg transition-all flex items-center space-x-1 cursor-pointer"
                   >
                     <Trash2 size={11} />
                     <span>Unlock Date</span>
                   </button>
+                  
                 </div>
               ))}
             </div>
@@ -148,7 +166,61 @@ export default function Availability() {
         </div>
 
       </div>
+      {notification && (
+  <div
+    className={`fixed bottom-5 right-5 flex items-center space-x-2.5 p-4 rounded-2xl shadow-xl border ${
+      notification.isError
+        ? 'bg-red-50 text-red-700 border-red-100'
+        : 'bg-emerald-50 text-emerald-900 border-emerald-100'
+    }`}
+    style={{ zIndex: 1000 }}
+  >
+    <div
+      className={`w-2 h-2 rounded-full ${
+        notification.isError ? 'bg-red-500' : 'bg-emerald-500'
+      }`}
+    ></div>
+
+    <span className="text-xs font-bold font-mono">
+      {notification.message}
+    </span>
+  </div>
+)}
+{confirmModal.isOpen && (
+  <div className="fixed inset-0 bg-slate-900/60 flex items-center justify-center z-50">
+    <div className="bg-white rounded-3xl p-6 max-w-sm w-full space-y-4">
+      
+      <h3 className="text-sm font-black">
+        Remove this blocked date?
+      </h3>
+
+      <p className="text-xs text-gray-500">
+        This will make the selected date available again for bookings.
+      </p>
+
+      <div className="flex gap-2">
+        <button
+          onClick={() =>
+            setConfirmModal({ isOpen: false, date: null })
+          }
+          className="flex-1 bg-gray-100 py-2 rounded-xl text-xs font-bold"
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={confirmRemoveBlock}
+          className="flex-1 bg-red-600 text-white py-2 rounded-xl text-xs font-bold"
+        >
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
     </div>
+
+    
   );
 }

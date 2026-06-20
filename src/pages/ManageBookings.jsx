@@ -5,11 +5,26 @@ import { api } from '../services/api';
 export default function ManageBookings() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [notification, setNotification] = useState(null);
   const [activeTab, setActiveTab] = useState('pending'); // 'pending', 'accepted', 'completed', 'cancelled'
-
+  const [confirmModal, setConfirmModal] = useState({
+  isOpen: false,
+  action: null,
+  id: null,
+  message: ''
+});
   useEffect(() => {
     loadBookingsList();
   }, []);
+  const triggerToast = (msg, isError = false) => {
+  setNotification({ message: msg, isError });
+
+  setTimeout(() => {
+    setNotification((curr) =>
+      curr && curr.message === msg ? null : curr
+    );
+  }, 4500);
+};
 
   const loadBookingsList = async () => {
     setLoading(true);
@@ -22,8 +37,29 @@ export default function ManageBookings() {
       setLoading(false);
     }
   };
+  const handleConfirmAction = async () => {
+  const actionMap = {
+    accepted: 'accept',
+    cancelled: 'reject',
+    completed: 'complete',
+  };
 
-  const handleUpdateStatus = async (id, status) => {
+  try {
+    await api.updateBookingStatus(
+      confirmModal.id,
+      actionMap[confirmModal.action]
+    );
+
+    triggerToast(`Booking ${confirmModal.action.toUpperCase()} successful`);
+    loadBookingsList();
+  } catch (err) {
+    triggerToast(err.message || 'Action failed', true);
+  } finally {
+    setConfirmModal({ isOpen: false, action: null, id: null, message: '' });
+  }
+};
+
+const handleUpdateStatus = async (id, status) => {
   const actionMap = {
     accepted: 'accept',
     cancelled: 'reject',
@@ -32,21 +68,13 @@ export default function ManageBookings() {
 
   const action = actionMap[status];
 
-  const confirmText =
-    action === 'accept'
-      ? 'Accept this booking?'
-      : action === 'complete'
-      ? 'Mark this job as completed?'
-      : 'Reject this booking?';
-
-  if (!window.confirm(confirmText)) return;
-
   try {
     await api.updateBookingStatus(id, action);
-    alert(`Status updated to ${action.toUpperCase()}`);
+
+    triggerToast(`Booking ${status.toUpperCase()} successfully`);
     loadBookingsList();
   } catch (err) {
-    alert(err.message || 'Error updating booking status');
+    triggerToast(err.message || 'Error updating booking status', true);
   }
 };
 
@@ -173,13 +201,27 @@ export default function ManageBookings() {
                   {b.status === 'pending' && (
                     <>
                       <button
-                        onClick={() => handleUpdateStatus(b.id, 'cancelled')}
+                        onClick={() =>
+  setConfirmModal({
+    isOpen: true,
+    action: 'cancelled',
+    id: b.id,
+    message: 'Are you sure you want to cancel this booking?'
+  })
+}
                         className="p-2 border border-gray-200 hover:border-red-200 text-red-500 hover:bg-red-50/50 rounded-xl transition cursor-pointer"
                       >
                         <X size={16} />
                       </button>
                       <button
-                        onClick={() => handleUpdateStatus(b.id, 'accepted')}
+                        onClick={() =>
+  setConfirmModal({
+    isOpen: true,
+    action: 'accepted',
+    id: b.id,
+    message: 'Confirm this booking request?'
+  })
+}
                         className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2 px-4 rounded-xl flex items-center space-x-1.5 cursor-pointer"
                       >
                         <Check size={14} />
@@ -190,7 +232,14 @@ export default function ManageBookings() {
 
                   {b.status === 'accepted' && (
                     <button
-                      onClick={() => handleUpdateStatus(b.id, 'completed')}
+                      onClick={() =>
+  setConfirmModal({
+    isOpen: true,
+    action: 'completed',
+    id: b.id,
+    message: 'Mark this job as completed?'
+  })
+}
                       className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs py-2 px-4 rounded-xl flex items-center space-x-1.5 cursor-pointer shadow-sm shadow-indigo-505"
                     >
                       <Check size={14} />
@@ -217,7 +266,79 @@ export default function ManageBookings() {
           ))}
         </div>
       )}
+      {notification && (
+  <div
+    className={`fixed bottom-5 right-5 flex items-center space-x-2.5 p-4 rounded-2xl shadow-xl border ${
+      notification.isError
+        ? 'bg-red-50 text-red-700 border-red-100'
+        : 'bg-emerald-50 text-emerald-900 border-emerald-100'
+    }`}
+    style={{ zIndex: 1000 }}
+  >
+    <div
+      className={`w-2 h-2 rounded-full ${
+        notification.isError ? 'bg-red-500' : 'bg-emerald-500'
+      }`}
+    />
+    <span className="text-xs font-bold font-mono">
+      {notification.message}
+    </span>
+  </div>
+)}
+{confirmModal.isOpen && (
+  <div
+    className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 z-50 animate-fade-in"
+    style={{ zIndex: 999 }}
+  >
+    <div className="bg-white rounded-3xl p-6 max-w-sm w-full border border-gray-150/50 shadow-2xl space-y-4">
 
+      {/* Title */}
+      <div className="space-y-1.5 text-center sm:text-left">
+        <h3 className="text-sm font-black text-slate-950 font-sans tracking-tight block">
+          ⚠️ Confirm Action
+        </h3>
+
+        <p className="text-[11px] text-gray-600 leading-relaxed font-semibold">
+          {confirmModal.message}
+        </p>
+      </div>
+
+      {/* Buttons */}
+      <div className="flex gap-2.5 pt-2">
+        <button
+          onClick={() =>
+            setConfirmModal({
+              isOpen: false,
+              action: null,
+              id: null,
+              message: ''
+            })
+          }
+          className="flex-1 bg-gray-50 active:bg-gray-100 text-gray-650 text-[10px] font-bold py-2.5 rounded-xl border border-gray-200"
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={() => {
+            setConfirmModal({
+              ...confirmModal,
+              isOpen: false
+            });
+
+            if (handleConfirmAction) {
+              handleConfirmAction();
+            }
+          }}
+          className="flex-1 bg-slate-950 hover:bg-slate-800 text-white text-[10px] font-extrabold py-2.5 rounded-xl shadow-md"
+        >
+          Proceed Confirm
+        </button>
+      </div>
+
+    </div>
+  </div>
+)}
     </div>
   );
 }

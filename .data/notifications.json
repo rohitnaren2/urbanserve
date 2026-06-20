@@ -1186,5 +1186,149 @@
     "message": "A client left a 4-star review on your recent job. Check your services statistics.",
     "is_read": false,
     "created_at": "2026-06-20T03:45:01.344Z"
+  },
+  {
+    "id": 134,
+    "user_id": 5,
+    "title": "Booking Update: Status is ACCEPTED",
+    "message": "Your service request has been ACCEPTED by the professional and scheduled!",
+    "is_read": false,
+    "created_at": "2026-06-20T05:06:54.522Z"
+  },
+  {
+    "id": 135,
+    "user_id": 1,
+    "title": "Booking Status Changed",
+    "message": "Booking #33 changed to accepted.",
+    "is_read": false,
+    "created_at": "2026-06-20T05:06:54.525Z"
+  },
+  {
+    "id": 136,
+    "user_id": 5,
+    "title": "Booking Update: Status is ACCEPTED",
+    "message": "Your service request has been ACCEPTED by the professional and scheduled!",
+    "is_read": false,
+    "created_at": "2026-06-20T05:07:01.385Z"
+  },
+  {
+    "id": 137,
+    "user_id": 1,
+    "title": "Booking Status Changed",
+    "message": "Booking #31 changed to accepted.",
+    "is_read": false,
+    "created_at": "2026-06-20T05:07:01.387Z"
+  },
+  {
+    "id": 138,
+    "user_id": 5,
+    "title": "Booking Update: Status is COMPLETED",
+    "message": "Your service has been marked as COMPLETED. Please leave a review!",
+    "is_read": false,
+    "created_at": "2026-06-20T05:07:09.094Z"
+  },
+  {
+    "id": 139,
+    "user_id": 1,
+    "title": "Booking Status Changed",
+    "message": "Booking #33 changed to completed.",
+    "is_read": false,
+    "created_at": "2026-06-20T05:07:09.097Z"
+  },
+  {
+    "id": 140,
+    "user_id": 5,
+    "title": "Booking Update: Status is COMPLETED",
+    "message": "Your service has been marked as COMPLETED. Please leave a review!",
+    "is_read": false,
+    "created_at": "2026-06-20T05:07:15.276Z"
+  },
+  {
+    "id": 141,
+    "user_id": 1,
+    "title": "Booking Status Changed",
+    "message": "Booking #23 changed to completed.",
+    "is_read": false,
+    "created_at": "2026-06-20T05:07:15.278Z"
+  },
+  {
+    "id": 142,
+    "user_id": 5,
+    "title": "Booking Update: Status is ACCEPTED",
+    "message": "Your service request has been ACCEPTED by the professional and scheduled!",
+    "is_read": false,
+    "created_at": "2026-06-20T05:18:28.114Z"
+  },
+  {
+    "id": 143,
+    "user_id": 1,
+    "title": "Booking Status Changed",
+    "message": "Booking #30 changed to accepted.",
+    "is_read": false,
+    "created_at": "2026-06-20T05:18:28.117Z"
+  },
+  {
+    "id": 144,
+    "user_id": 5,
+    "title": "Booking Update: Status is ACCEPTED",
+    "message": "Your service request has been ACCEPTED by the professional and scheduled!",
+    "is_read": false,
+    "created_at": "2026-06-20T05:18:32.396Z"
+  },
+  {
+    "id": 145,
+    "user_id": 1,
+    "title": "Booking Status Changed",
+    "message": "Booking #27 changed to accepted.",
+    "is_read": false,
+    "created_at": "2026-06-20T05:18:32.399Z"
+  },
+  {
+    "id": 146,
+    "user_id": 5,
+    "title": "Booking Update: Status is COMPLETED",
+    "message": "Your service has been marked as COMPLETED. Please leave a review!",
+    "is_read": false,
+    "created_at": "2026-06-20T05:18:41.843Z"
+  },
+  {
+    "id": 147,
+    "user_id": 1,
+    "title": "Booking Status Changed",
+    "message": "Booking #31 changed to completed.",
+    "is_read": false,
+    "created_at": "2026-06-20T05:18:41.846Z"
+  },
+  {
+    "id": 148,
+    "user_id": 5,
+    "title": "Booking Update: Status is COMPLETED",
+    "message": "Your service has been marked as COMPLETED. Please leave a review!",
+    "is_read": false,
+    "created_at": "2026-06-20T05:19:06.011Z"
+  },
+  {
+    "id": 149,
+    "user_id": 1,
+    "title": "Booking Status Changed",
+    "message": "Booking #30 changed to completed.",
+    "is_read": false,
+    "created_at": "2026-06-20T05:19:06.013Z"
+  },
+  {
+    "id": 150,
+    "user_id": 5,
+    "title": "Booking Update: Status is COMPLETED",
+    "message": "Your service has been marked as COMPLETED. Please leave a review!",
+    "is_read": false,
+    "created_at": "2026-06-20T05:22:47.349Z"
+  },
+  {
+    "id": 151,
+    "user_id": 1,
+    "title": "Booking Status Changed",
+    "message": "Booking #27 changed to completed.",
+    "is_read": false,
+    "created_at": "2026-06-20T05:22:47.355Z"
   }
 ]
