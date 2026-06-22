@@ -283,7 +283,7 @@ maxLength={4}
                 <p className="text-xs text-emerald-800 font-bold">Standard UPI QR instant sync active</p>
                 <div className="mx-auto w-28 h-28 bg-white p-3 rounded-xl shadow-xs border border-gray-100 flex items-center justify-center">
                   <img
-                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150"
+                     src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=demo-payment"
                     alt="Mock QR code placeholder"
                     className="w-full h-full object-cover grayscale brightness-90"
                   />

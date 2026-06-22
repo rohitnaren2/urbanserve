@@ -1339,5 +1339,47 @@
     "message": "Booking #27 changed to completed.",
     "is_read": false,
     "created_at": "2026-06-20T05:22:47.355Z"
+  },
+  {
+    "id": 152,
+    "user_id": 5,
+    "title": "Booking Update: Status is COMPLETED",
+    "message": "Your service has been marked as COMPLETED. Please leave a review!",
+    "is_read": true,
+    "created_at": "2026-06-20T09:41:29.869Z",
+    "updated_at": "2026-06-22T14:00:44.418Z"
+  },
+  {
+    "id": 153,
+    "user_id": 1,
+    "title": "Booking Status Changed",
+    "message": "Booking #26 changed to completed.",
+    "is_read": false,
+    "created_at": "2026-06-20T09:41:29.873Z"
+  },
+  {
+    "id": 154,
+    "user_id": 6,
+    "title": "New Service Request Received",
+    "message": "A client has requested \"Ac Installation\" for 2026-06-26 at 02:00 PM - 04:00 PM. Please review the order.",
+    "is_read": false,
+    "created_at": "2026-06-22T14:00:43.293Z"
+  },
+  {
+    "id": 155,
+    "user_id": 1,
+    "title": "New Booking Created",
+    "message": "A new booking was created for \"Ac Installation\".",
+    "is_read": false,
+    "created_at": "2026-06-22T14:00:43.299Z"
+  },
+  {
+    "id": 156,
+    "user_id": 5,
+    "title": "Booking Order Received",
+    "message": "Your booking for \"Ac Installation\" on 2026-06-26 is pending provider acceptance.",
+    "is_read": true,
+    "created_at": "2026-06-22T14:00:43.304Z",
+    "updated_at": "2026-06-22T14:00:44.422Z"
   }
 ]

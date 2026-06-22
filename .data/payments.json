@@ -284,5 +284,13 @@
     "payment_method": "Card",
     "payment_status": "pending",
     "created_at": "2026-06-20T03:43:04.697Z"
+  },
+  {
+    "id": 35,
+    "booking_id": 35,
+    "amount": "60.00",
+    "payment_method": "Card",
+    "payment_status": "pending",
+    "created_at": "2026-06-22T14:00:43.283Z"
   }
 ]

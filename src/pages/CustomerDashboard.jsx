@@ -206,15 +206,24 @@ export default function CustomerDashboard({ user }){
           </div>
 
           {/* Secure Assurance Banner */}
-          <div className="bg-gradient-to-br from-gray-900 to-gray-850 p-6 rounded-3xl text-white space-y-3 relative overflow-hidden">
-            <div className="absolute top-10 right-0 opacity-10 font-bold select-none text-9x">
-              $$
-            </div>
-            <h4 className="font-bold text-sm">UrbanServe Certified Protection</h4>
-            <p className="text-[10px] text-gray-400 leading-relaxed">
-              Every appointment carries standard $1,000 property damages coverage and a 30-day labor warranty. Payment remains securely in escrow until you approve the checkout!
-            </p>
-          </div>
+        <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-3xl text-white relative overflow-hidden">
+
+  {/* Background symbol */}
+  <div className="absolute top-4 right-4 opacity-5 font-bold select-none text-8xl pointer-events-none">
+    $$
+  </div>
+
+  <h4 className="font-bold text-sm relative z-10">
+    UrbanServe Certified Protection
+  </h4>
+
+  <p className="text-xs text-gray-300 leading-relaxed relative z-10 mt-2">
+    Every appointment carries standard $1,000 property damages coverage and a
+    30-day labor warranty. Payment remains securely in escrow until you approve
+    the checkout!
+  </p>
+
+</div>
 
         </div>
 
