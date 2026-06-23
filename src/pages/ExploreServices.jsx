@@ -3,15 +3,19 @@ import { Search, Compass, Star, SlidersHorizontal, ChevronsUpDown, ShieldAlert, 
 import { api } from '../services/api';
 import { CardSkeleton } from '../components/Skeleton';
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function ExploreServices({ initialKeyword = '', initialCategory = 'All' }) {
   const navigate = useNavigate();
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+  const location = useLocation();
   // States for search and filter controls
-  const [keyword, setKeyword] = useState(initialKeyword);
-  const [category, setCategory] = useState(initialCategory);
+  const [keyword, setKeyword] =
+  useState(location.state?.keyword || '');
+
+  const [category, setCategory] =
+  useState(location.state?.category || 'All');
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [rating, setRating] = useState('');
